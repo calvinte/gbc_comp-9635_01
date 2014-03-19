@@ -16,7 +16,7 @@ git repository, pretty cool, eh?
 **Deliverables for Week 1:**  
 
 1. Fork this repository to your own Github account.
-2. Add a folder `lastname-firstname` in the week-01 folder.
+2. Add a folder `lastname-firstname` in the `week-01` folder.
 3. Create a `index.html` file in this folder, with a short biography.
 4. Submit a pull-request back to the parent repository.
 
