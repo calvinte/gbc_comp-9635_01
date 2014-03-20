@@ -1,0 +1,43 @@
+body{
+	background-color: #A9A9A9;
+	background: url("background12.jpg");
+	margin: auto;
+	width: 1000px;
+	font-family: 'Stint Ultra Expanded', cursive;
+	color: #000;
+}
+
+p{
+	line-height: 20px;
+	color: #000;
+	font-size: 18px;
+}
+.header img{
+	float: left;
+	width:120px;
+	margin: 10px 20px 0 0 ;
+}
+
+h1{
+	font-family: Arial, cursive;
+	font-size: 3em;
+	color: #fff;
+	margin: 0;
+}
+
+h3{
+	font-family: Arial, cursive;
+	font-size: 2em;
+	color: #fff;
+}
+
+h2,h4{
+	color: #000000;
+}
+
+h5{
+	font-family: Arial, cursive;
+	font-size: 1em;
+	color: #000;
+}
+
