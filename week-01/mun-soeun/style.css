@@ -1,0 +1,25 @@
+body{
+	font-family: "Tahoma";
+	width: 600px;
+	
+	padding: 25px;
+	margin: 50px auto auto auto;
+	border: 2px solid #660099;
+	border-radius: 45px 0 45px 0;
+}
+h2{
+	text-align: center;
+	text-transform: uppercase;
+}
+#intro {
+	padding-left: 50px;
+	padding-right: 50px;
+}		
+#hobby {
+	float: left;
+}
+#hobby_pic {
+	float: left;
+	padding-right:25px;
+	padding-bottom: 50px;
+}
