@@ -1,0 +1,18 @@
+body{
+background-color: grey;
+font: verenda;
+background-image: url('lion.jpg');
+}
+
+
+h1{
+font-size: 45px;
+color: green;
+text-decoration: underline;
+}
+
+p{
+font-size: 25px;
+color: red;
+font-family:"Times New Roman",Georgia,Serif;
+}

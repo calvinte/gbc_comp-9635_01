@@ -1,0 +1,31 @@
+body {
+	font-family: Georgia, sans serif;
+	background: #686868;
+	}
+
+h1 {
+	color: #ccccff;
+	text-align: center;
+	}
+
+p {
+font-size: 20px;
+color: #9999ff;
+
+}
+
+img{
+	float: auto;
+	margin: auto;
+	border-radius: 20px 20px 20px 20px;
+	
+}
+
+footer{
+	height: 20px;
+	text-align: center;
+	border-radius: 10px 10px 10px 10px; 
+}
+footer p{
+	color: #ffffff;
+}

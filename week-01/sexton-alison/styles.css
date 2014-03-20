@@ -1,0 +1,106 @@
+/* AB Sexton Styles*/
+
+/*Web font styles*/
+@font-face {
+	font-family: 'Conv_Bellota-Regular';
+	src: url('fonts/Bellota-Regular.eot');
+	src: local('☺'), url('fonts/Bellota-Regular.woff') format('woff'), url('fonts/Bellota-Regular.ttf') format('truetype'), url('fonts/Bellota-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*site body styles*/
+body {
+	width: 1000px;
+	max-width: 1000px;
+	background-image: url("whitneygrey.png"); /*background img from http://bg.siteorigin.com/*/
+	margin:auto;
+}
+
+
+/*header styles*/
+#header {
+	width: 200px;
+	margin: auto;
+}
+
+
+/*menu/nav bar styles*/
+#nav-bar {
+	width:1000px;
+	margin:auto;
+	padding-bottom:60px;
+}
+
+
+#nav-bar li {
+	width:200px;
+	height:50px;
+	margin:auto;
+	display:inline-block;
+	list-style: none;
+	padding-left:10px;
+	padding-right:10px;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	text-align:center;
+	position:relative;
+}
+
+#nav-bar a {
+	font-family:'Conv_Bellota-Regular',Sans-Serif;
+	font-size: 20px;
+	color: #000000;
+	text-decoration: none;
+	text-align:center;
+}
+
+/*nar bar hover colour*/
+#nav-bar ul li a:hover  {
+	color: #777777;
+}
+/*END OF NAV BAR*/
+
+/*HOME*/
+/*main image styles*/
+#welcome-photo {
+	width:1000px;
+	margin:auto;
+	padding-top:40px;
+	padding-bottom: 10px;
+	position:relative;
+	overflow:hidden;
+}
+
+/*home text styles*/
+#home-text {
+	width: 800px;
+	margin:auto;
+	padding-bottom: 100px;
+}
+
+#home-text p {
+	text-align:center;
+	font-family:'Conv_Bellota-Regular',Sans-Serif;
+	font-size: 30px;
+	line-height: 10px;
+}
+/*END OF HOME*/
+
+
+/*footer styles*/
+#footer {
+	margin:auto;
+}
+
+#footer-img {
+	width:100px;
+	margin:auto;
+	padding-top:30px;
+}
+
+#footer p{
+	text-align: center;
+	font-family:'Conv_Bellota-Regular',Sans-Serif;
+	padding-bottom: 20px;
+}
