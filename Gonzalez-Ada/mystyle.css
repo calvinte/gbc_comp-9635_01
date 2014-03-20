@@ -1,5 +1,6 @@
     
- body {background-color:##EDFFFE;
+ body {
+ background-color:#ffffff;
  	width: 800px;
  	}
 
@@ -11,12 +12,12 @@ p {
     }
 
 
-h1{
+h3{
 	font-family: verdana;
-	font-size: 30px;
-	color: #ffffff;
+	font-size: 10px;
+	color: #00CCCC;
 	text-align: center;
-	margin: -20px 95px 0px 0px;
+	
 }
 h2{
 	text-align: center;
@@ -28,7 +29,7 @@ h2{
 
 .content{
 
-    background-color:ffffff;
+    background-color:#ffffff;
      	width: 400px;
 
 	}
