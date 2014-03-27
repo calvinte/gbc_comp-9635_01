@@ -14,12 +14,12 @@ color: #9999ff;
 
 }
 
-img{
+/*img{
 	float: auto;
 	margin: auto;
 	border-radius: 20px 20px 20px 20px;
 	
-}
+}*/
 
 footer{
 	height: 20px;
@@ -28,4 +28,27 @@ footer{
 }
 footer p{
 	color: #ffffff;
+}
+
+.intro-pic {
+	text-align: center;
+	margin: 20px 0 0 0;
+	border-radius: 20px 20px 20px 20px;
+}
+
+#container {
+	width: 880px;
+	margin: center;
+}
+
+.intro {
+	background-color: #d3d3d3;
+    max-width: 500px;  
+    padding: 5px 10px 5px 5px;
+	border-radius: 20px 20px 22px 20px;
+	float: right;
+	margin: auto;
+	margin-right: -280px;	
+	overflow: hidden;
+	
 }
