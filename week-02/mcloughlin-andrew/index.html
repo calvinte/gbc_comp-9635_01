@@ -12,9 +12,9 @@
  $(document).ready(function() {
  var header = "my pics";
  $("h1").text(header);
+ 
  $( "h1" ).fadeIn( 3000 );
 });   
-
 
 
 $.ajax({
@@ -29,8 +29,10 @@ $.ajax({
 				//document.getElementById('links').innerHTML += '<a href="' + photo.link + '"><img src="' + photo.images.thumbnail.url + '"></a>';
 				
 				
-				$('#links').append('<a href="' + photo.link + '"><img src="' + photo.images.thumbnail.url + '"></a>').fadeIn( 3000 );
+				//$('#links').append('<a href="' + photo.link + '"><img class="instaImg" src="' + photo.images.thumbnail.url + '"></a>').fadeIn( 3000 );
 			
+			
+			$('#links').append('<a href="' + photo.link + '"><img class="instaImg" src="' + photo.images.thumbnail.url + '"></a>');
 				
 				});
 			}
@@ -40,10 +42,18 @@ $.ajax({
 
 <style type="text/css">
 #wrapper {margin:0 auto; width:100%; height:100%;}
-h1 {text-align:center; font-size:64px; color:#FFF; font-family: 'Open Sans', sans-serif; text-transform:uppercase; display:none;}
-.thetop {background-color:#0066CC; height:auto; margin:0 auto; width:100%;}
+h1 {text-align:center; font-size:100px; color:#FFF; font-family: 'Open Sans', sans-serif; text-transform:uppercase; display:none;}
+.thetop {background-color:#0066CC; height:auto; margin:0 auto; width:100%; padding:10px;}
 img #links {display:inline-block;}
-#links {height:auto; width:50%; margin: 0 auto;}
+#links {height:auto; width:90%; margin: 0 auto;}
+.instaImg {padding:5px; display:inline-block;border-radius:100%;}
+
+
+.instaImg:hover { -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+opacity:0.5;
+	}
+
 body,td,th {
 	font-size: 14px;
 }
