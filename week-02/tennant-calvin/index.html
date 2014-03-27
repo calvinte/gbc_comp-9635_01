@@ -1,0 +1,28 @@
+<doctype html>
+<html>
+	<head>
+		<title>Week 2, Instagram!</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript">
+			$.ajax({
+				type: "GET",
+				dataType: "jsonp",
+				cache: false,
+				url: 'https://api.instagram.com/v1/users/230199680/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f',
+				success: function(response) {
+					console.log(response);
+					response.data.forEach(function(media) {
+						var html = '';
+						html += '<img src="';
+						html += media.images.standard_resolution.url;
+						html += '">';
+						document.body.innerHTML += html;
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
