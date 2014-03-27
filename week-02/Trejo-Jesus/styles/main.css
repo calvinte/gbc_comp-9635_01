@@ -10,18 +10,20 @@ body {
 }
 
 h1 {
- font-size: 30px; 
+ font-size: 50px; 
  font-weight: bold;
  margin-top: 20px;
- 
- background-color: #DCD9D9;
- height: 50px;
+ text-align: center;
+height: 50px;
 }
 
 h2 {
+bottom:20px;
  font-size: 20px; 
  font-weight: bold;
  line-height: 15px;
+ height: 50px;
+ text-align: center;
 }
 
 h3 {
@@ -48,42 +50,27 @@ a {
  color: #666;
 }
    
-li { 
- float: left;
-}
-
-iframe {
- float:left;
- border: 1px solid #ff8a00;
- position: absolute;
- top:77px;
- right:20px; 
-}
-
 .cont {
  position: absolute;
  right: 20px;
  top: 328px;
 }
 
-.img{
+#photos{
  border:1px solid #ff8a00;
- top:91px;
- left:10px;
+ margin:15px;
  width: 150px;
- position: absolute;
- height: 177px;
 }
  
 
-div .img:hover  {
+div #photos:hover  {
  border:1px solid #666;
 }
 
-.container {
- width: 940px;
- height: 600px;
- padding: 10px;
+.insta-photos{
+ max-width: 80%;
+
+padding: 10px;
  margin-top: 10px;
  margin-left: auto;
  margin-right: auto;
@@ -91,6 +78,7 @@ div .img:hover  {
  border-radius: 0 0 5px 5px;
  position: relative;
  background-color: #F6F6F6; 
+ overflow: hidden;
 }
 
 .content {
@@ -131,10 +119,3 @@ div .img:hover  {
   position: absolute;
 }
 
-.twitt{
-position: absolute;
-   width: 350px;
-   height: 170px;
-   right: -9px;
-   top:12px;
-}

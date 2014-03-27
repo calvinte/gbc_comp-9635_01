@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+
+
+<title>Testing</title>
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+<script type="text/javascript">
+$.ajax({
+
+	type: 'GET',
+	dataType: 'jsonp',
+	url: 'https://api.instagram.com/v1/media/popular?client_id=585d00be2af34a26b0e1caa6995cf19f',
+	success: function(response){
+
+		console.log(response);
+		response.data.forEach(function(photo){
+			console.log(photo);
+			console.log(photo.link);
+			$('.insta-photos').append(
+				'<a href=" '
+				+photo.link
+				+'"><img id="photos" src=" ' 
+				+ photo.images.low_resolution.url 
+				+ ' "></a>'
+				); 
+		});
+	},
+
+});
+</script>
+</head>
+
+
+
+
+
+<body>
+	<div class="header"><h1>Here Are my Instagram Pics</h1></div>
+<div class= "insta-photos">
+	</div>
+<div class="footer"><h2>Thanks for taking a look</h2></div>
+	
+
+</body>
+
+
+</html>
