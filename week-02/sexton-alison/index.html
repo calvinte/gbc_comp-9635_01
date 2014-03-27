@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Testing!</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+     <script type="text/javascript">
+        $.ajax({
+          type: "GET",
+          dataType: "jsonp",
+          url: "https://api.instagram.com/v1/users/185048560/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f",
+          success: function(response){
+            console.log(response);
+            response.data.forEach(function(photo) {
+              console.log(photo);
+              console.log(photo.link);
+              $('.insta-photos').append(
+                '<img src="' + photo.images.thumbnail.url + '">'
+                );
+            });
+          },
+        });
+    </script>
+  </head>
+ <body>
+  <h1>Welcome. Here are my photos.</h1>
+  <div class="insta-photos"></div>
+</body>
+</html>
