@@ -15,13 +15,15 @@ $.ajax({
 		console.log(photo.link);
 		$('.insta-photos').append ('<a href=" '+ photo.link +' "> <img src=" '+ photo.images.standard_resolution.url +' "></a> ');
 		});
+		
 	},
 
 });
 </script>
 </head>
-<body>
-	<div class="insta-photos"></div>
+<body bgcolor="#E6E6FA">
+	<div class="insta-photos" align="center"></div>
+	
 	<p>Thanks for taking a look!</p>
 </body>
 </html>
