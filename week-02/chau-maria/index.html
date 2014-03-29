@@ -10,10 +10,16 @@
 				url: 'https://api.instagram.com/v1/users/230199680/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f',
 				success: function(response) {
 				console.log(response);
-				response.data.forEach(function(photo) {
-					console.log(photo);
+				response.data.forEach(function(media) {
+				/*	console.log(photo);
 					console.log(photo.link);
 					$('.insta-photos').append('<a href="' + photo.link + '"><img src="' + photo.images.standard_resolution.url + '"></a>');
+					*/
+					var html = '';
+					html += '<img src="';
+					html += media.images.standard_resolution.url;
+					html += '">'
+					document.body.innerHTML += html;
 				});
 				},
 			});
@@ -24,5 +30,6 @@
 		<div class="insta-photos"></div>
 		<p>Thanks for taking a look</p>
 		<p>Bye!</p>
+		<p>See you!</p>
 	</body>
 </html>
