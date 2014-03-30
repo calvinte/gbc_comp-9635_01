@@ -76,6 +76,7 @@
 			width:200px;
 			height: 142px;
 			display:inline-block;
+			padding: 15px;
 			margin-top; 15px;
 			margin-bottom; 15px;
 			box-shadow: 1px 1px 5px #330000;
@@ -95,4 +96,17 @@
 			}	
 		
 
+		#thanks {
+			
+			background-color: #996633;
+			box-shadow: 1px 1px 5px #330000;
+			opacity: .9;
+			text-align: center;
+			padding: 10px;
+			margin-top: 15px;
+			margin-left: 0px;
+			color: #fff;
 
+			position:relative;
+			top: 15 px;
+		}
