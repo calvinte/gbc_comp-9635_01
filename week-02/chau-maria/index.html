@@ -11,7 +11,7 @@
 				success: function(response) {
 				console.log(response);
 				response.data.forEach(function(photo) {
-					console.log(photo);
+				/*	console.log(photo);	*/
 					console.log(photo.link);
 					$('.insta-photos').append('<a href="' + photo.link + '"><img src="' + photo.images.standard_resolution.url + '"></a>');
 					
@@ -22,7 +22,9 @@
 		<style>
 			.insta-photos {
 				background: #484848;
+				width: 200px;
 			}
+			
 		</style>
 	</head>
 	<body>
