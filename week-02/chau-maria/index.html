@@ -14,11 +14,7 @@
 					console.log(photo);
 					console.log(photo.link);
 					$('.insta-photos').append('<a href="' + photo.link + '"><img src="' + photo.images.standard_resolution.url + '"></a>');
-					var html = '';
-					html += '<img src="';
-					html += photo.images.standard_resolution.url;
-					html += '">'
-					document.body.innerHTML += html;
+					
 				});
 				},
 			});
