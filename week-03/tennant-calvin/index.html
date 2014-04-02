@@ -1,0 +1,58 @@
+<!doctype html)
+<html>
+	<head>
+		<title>week 3</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript">
+			var nexturl = 'https://api.instagram.com/v1/users/10206720/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f';
+			var threshold = 100;
+			var loading = false;
+			function getNextPage() {
+				if (loading) return;
+				console.log('getting page');
+				loading = true;
+				$.ajax({
+					type: "GET",
+					dataType: "jsonp",
+					cache: false,
+					url: nexturl,
+					success: function(response) {
+						nexturl = response.pagination.next_url;
+						response.data.forEach(function(media) {
+							var html = '';
+							html += '<img src="';
+							html += media.images.standard_resolution.url;
+							html += '">';
+							$('.insta-photos').append(html);
+						});
+						loading = false;
+					}
+				});
+			}
+			/*
+			$(document).ready(function() {
+				$('button').click(getNextPage);
+			});
+			*/
+			$(window).scroll(function() {
+				if (document.body.scrollTop + window.innerHeight > $('.insta-photos').height() - threshold) {
+					getNextPage();
+				}
+			});
+
+		</script>
+		<style type="text/css">
+			html, body {
+				width: 100%;
+				min-height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="insta-photos"></div>
+		<!--button>Get next page!</button-->
+	</body>
+</html>
+
