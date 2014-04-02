@@ -26,40 +26,10 @@ bottom:20px;
  text-align: center;
 }
 
-h3 {
- font-size: 15px; 
- font-weight: bold;
- line-height: 15px;
-}
-
-p { font-size: 16px;
- line-height: 22px;
-
-margin-bottom:20px;
-}
-
-ul {
- list-style-type: none;
- padding: 0;
- margin: 0;
- text-decoration: none;
-}
-
-a {
- text-decoration: none;
- color: #666;
-}
-   
-.cont {
- position: absolute;
- right: 20px;
- top: 328px;
-}
-
 #photos{
  border:1px solid #ff8a00;
- margin:15px;
- width: 150px;
+ margin: 15px;
+ width: 155px;
 }
  
 
@@ -68,9 +38,9 @@ div #photos:hover  {
 }
 
 .insta-photos{
- max-width: 80%;
-
-padding: 10px;
+ width: 80%;
+ max-width: 800px;
+ padding: 10px;
  margin-top: 10px;
  margin-left: auto;
  margin-right: auto;
@@ -81,41 +51,29 @@ padding: 10px;
  overflow: hidden;
 }
 
-.content {
- background-color: #EBEFF3;
- overflow: hidden;
- width: 680px;
- min-height: 410px;
- padding-left:10px;
- padding-right:10px;
- float: left;
- font-size: .9em;
- position: relative;
+.header {
+ border:1px dotted #fff;
+ background-color: #ff8a00;
+ width:80%;
+ padding: 10px;
+ max-width: 800px;
+ height: 100px;
  margin-top: 10px;
+ margin-left: auto;
+ margin-right: auto;
  margin-bottom: 10px;
+ margin-top: 10px; 
+ border-radius: 5px 5px 0 0;
+ box-shadow: 0px 0px 15px #4E4E49;
 }
 		
 .footer { 
  clear: both; 
- background-color: #DCDCDB; 
  height: 30px;
  text-align: center;
  border-radius: 0 0 5px 5px;
 }
 
-.whiteText { Color: #fff; }
 
-.copyRight { 
- font-size: 10px;
- color: #000; 
- padding-top: 5px;
- text-align: center; 
-}
 
-.para {
-  width: 400px;
-  left: 180px;
-  top:75px;
-  position: absolute;
-}
 
