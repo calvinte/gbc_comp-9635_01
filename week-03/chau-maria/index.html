@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Week 3!</title>
+			<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+			<script>
+				var nexturl ='https://api.instagram.com/v1/users/10206720/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f';
+				var loading = false;
+				function getNextPage() {
+					if (loading) return;
+					loading=true;
+					console.log('getting page');
+					$.ajax({
+						type: 'GET',
+						dataType: 'jsonp',
+						cache: false,
+						url: nexturl,
+						success: function(response) {
+							console.log(response);
+							nexturl = response.pagination.next_url;
+							response.data.forEach(function(photo) {
+								var html = '';
+								html += '<img src="';
+								html += photo.images.standard_resolution.url;
+								html += '">';
+								$('.insta-photos').append(html);
+							});
+							loading = false;
+						}
+					});
+				}
+			
+				getNextPage();
+				$(window).scroll(function() {
+					var threshold = 100;
+					if (document.body.scrollTop + window.innerHeight >= $('.insta-photos').height() - threshold) {
+						getNextPage();
+					}
+				});	
+					
+				/*
+				$(document).ready(function() {
+					$('button').click(getNextPage);
+				});
+				*/
+			</script>
+			<style>
+				body {
+					background: #c8c8c8;
+					text-align: center;
+					
+				}
+				
+				h1 {
+					text-align: center;
+					color: #FF6600;
+					font-family: Helvetica;
+					font-size: 50px;
+					background-color: #33ccff;
+					box-shadow: 5px 5px 10px #330000;
+				}
+				
+				p {
+					text-align: center;
+					font-size: 25px;
+					color: #ff6600;
+					font-family: Helvetica;
+				}
+				
+				
+			
+				.insta-photos img {
+					margin: 20px;
+					width: 300px;
+					border: solid 1px #330000;
+					border-radius: 50%;
+					padding: 5px;
+					box-shadow: 5px 5px 10px #330000;
+				}
+				
+				.insta-photos img:hover {
+					border: solid 1px #ff9933;
+					box-shadow: 5px 5px 10px #ff6600;
+				}
+			</style>
+	</head>
+	<body>
+		<h1>WEEK 3</h1>
+		<p>OBAMA PICS</p>
+		<div class="insta-photos"></div>
+		<!-- <button>Get Next Page</button> -->
+		<p>You've finally reached the end.  High five!</p>
+	</body>
+</html>
