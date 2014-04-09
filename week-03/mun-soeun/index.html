@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+	<!-- infinite page scroll down with instagram photos -->
+	<head>
+		<title> Week 3 Lesson</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script>
+			var nexturl = 'https://api.instagram.com/v1/users/10206720/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f';
+			//console.log("test");
+			var loading = false; 
+			//this loading var helps to prevent more than once loading events of same photos and thus only allows loading event once for each page
+			function getNextPage(){
+				if (loading) return;
+				loading = true;
+				console.log('getting page');
+				$.ajax({
+					type: 'GET',
+					dataType: 'jsonp',
+					cache: false,
+					url: nexturl,
+					success: function (response) {
+						console.log(response);
+						nexturl = response.pagination.next_url;
+						//console.log(nexturl);
+						response.data.forEach(function(media) {
+							var html = '';
+							html += '<img src="';
+							html += media.images.standard_resolution.url;
+							html += '">';
+							$('.insta-photos').append(html);
+						});
+						loading = false;
+					}
+				
+				}); 
+			}
+			getNextPage();
+			$(window).scroll(function(){
+				//console.log(document.body.scrollTop); // one browser scroll-down page
+				//console.log(window.innerHeight); // browser window height 
+				//console.log($('.insta-photos').height()); 
+				var threshold = 100; //px - this gives a little bit of space at the bottom of the page before loading the next page
+				if (document.body.scrollTop + window.innerHeight >= $('.insta-photos').height() - threshold){
+					getNextPage();
+				}
+			});
+			/*
+			$(document).ready(function() {
+				$('button').click(getNextPage);
+			});
+			*/
+		</script>
+		<style>
+			h1 {
+				color: #f5f1e2;
+				text-shadow: 1px 1px 2px #e8d6d9;
+				border: 3px solid #26243d;
+				background: #26243d;
+				border-radius: 15px 15px 0 0;
+				text-align: center;
+				padding: 10px;
+				width: 500px;
+				margin: auto;
+				margin-top: 50px;
+				margin-bottom: 0;
+			}	
+			.insta-photos {
+				margin: auto;
+				border: 20px solid #26243d;
+				box-shadow: 4px 4px 10px #cadbde;
+				width: 1280px;
+				text-align: center;
+				border-radius: 30px 30px 30px 30px;
+				overflow: hidden;
+				background: #f5f1e2;
+				transition: 1s;
+				-webkit-transition: 1s;
+				-moz-transition:1s;
+			}
+			.insta-photos:hover {
+				border: 20px solid #c5e8d0;
+				background: #e6f2b8;
+				transition: 1s;
+				-webkit-transition: 1s;
+				-moz-transition:1s;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<h1> So... What is Prez Obama up to?</h1>
+		<div class="insta-photos"></div>
+		<!--<button> Get Next Page </button>-->
+	</body>
+	
+</html>
+
