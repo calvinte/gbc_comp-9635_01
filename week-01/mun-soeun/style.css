@@ -4,16 +4,19 @@ body{
 	
 	padding: 25px;
 	margin: 50px auto auto auto;
-	border: 2px solid #660099;
-	border-radius: 45px 0 45px 0;
+	
 }
 h2{
 	text-align: center;
 	text-transform: uppercase;
+	background: #00cccc;
 }
 #intro {
 	padding-left: 50px;
 	padding-right: 50px;
+	padding-top: 25px;
+	border: 2px solid #660099;
+	border-radius: 45px 0 45px 0;
 }		
 #hobby {
 	float: left;
@@ -22,4 +25,8 @@ h2{
 	float: left;
 	padding-right:25px;
 	padding-bottom: 50px;
+}
+#list-title {
+	text-decoration: underline;
+	color: #ff66ff;
 }

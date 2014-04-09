@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>week 3</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+		<script type="text/javascript">
+		
+		var nexturl = 'https://api.instagram.com/v1/users/187969437/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f';
+		var loading =false;
+		function getNextPage(){
+			if(loading)return;
+			loading=true;
+			/*console.log('getting Page');*/
+			$.ajax({
+				type:'GET',
+				dataType:'jsonp',
+				cache:'false',
+				url: nexturl,
+				success:function(response){
+					nexturl = response.pagination.next_url;	
+					response.data.forEach(function(photo){
+						var html='';
+						html +='<img src="';
+						html += photo.images.standard_resolution.url;
+						html+='">';
+						$('.insta-photos').append(html); 
+					});
+					loading= false;
+				}
+			});
+		}
+		/*
+		$(document).ready(function(){
+			$('button').click(getNextPage)
+		});
+		*/
+		$(window).scroll(function(){
+			var threshold= 100;
+			if(document.body.scrollTop + window.innerHeight >= $('insta-photos').height() - threshold){
+				getNextPage();
+			}
+		});
+		$(document).ready(getNextPage);
+		</script>
+		<style type="text/css">
+	
+
+		body {
+		 background-color: #DCD8D8;
+		 font-family: 'Antic Slab', serif;
+		 font-size: 15px;
+		 color: #000;
+		}
+
+		h1 {
+		 font-size: 50px; 
+		 font-weight: bold;
+		 margin-top: 20px;
+		 text-align: center;
+		height: 50px;
+		}
+
+
+		.insta-photos img{
+		 border:2px solid #ff0000;
+		 margin: 20px;
+		 width: 220px;
+		}
+		 
+
+		img:hover  {
+		 border:2px solid #fff;
+		}
+
+		.insta-photos{
+		 width: 80%;
+		 max-width: 800px;
+		 padding: 10px;
+		 margin-top: 10px;
+		 margin-left: auto;
+		 margin-right: auto;
+		 box-shadow: 0px 0px 15px #4E4E49;
+		 border-radius: 0 0 5px 5px;
+		 position: relative;
+		 background-color: #333; 
+		 overflow: hidden;
+		}	
+		
+
+
+</style>
+		</head>
+	
+	<body>
+
+	<div class="insta-photos"></div>
+	<!--button>Get Next Page</button-->
+	</body>
+</html>
+
