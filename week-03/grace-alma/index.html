@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<title>week3</title>
+
+</head>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+var nexturl = 'https://api.instagram.com/v1/users/10206720/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f';
+var loading = false;			
+	function getNextPage() {
+		if (loading) return;
+		loading = true;
+		console.log('getting page');
+		$.ajax({
+			type: 'GET',
+			dataType: 'jsonp',
+			cache: false,
+			url: nexturl,
+			success: function(response) {
+				console.log(response);
+				nexturl = response.pagination.next_url;
+				response.data.forEach(function(photo) {
+					var html = '';
+					html += '<img src="';
+					html += photo.images.standard_resolution.url;
+					html += '">';
+					$('.insta-photos').append(html);
+				});
+				loading = false;
+			}
+		});
+	}
+	
+	getNextPage();
+	$(window).scroll(function() {
+		var threshold = 100;
+		if (document.body.scrollTop + window.innerHeight >= $('.insta-photos').height() - threshold) {
+			getNextPage();
+		}
+	});
+	/*
+	$(document).ready(function() {
+		$('button').click(getNextPage);
+		
+	});
+	*/
+	
+</script>
+<style>
+
+	.header{
+
+		margin: auto;
+		text-align: center;
+		background-color: #ffffff;
+		height: 150px;
+		width: 965px;
+		padding: 1px ;
+		padding-left: 0px;
+		color: #000000;
+		opacity: 0.9;
+		text-shadow:0px 0px 2px #FFFFFF, 2px 2px 2px #333333;
+		box-shadow: 5px 5px 5px #330000;
+		overflow: hidden;
+	}
+	
+		body{
+			background-color: #ffffff;
+			background: url("http://images2.layoutsparks.com/1/51720/vine-green-background-pattern.jpg");
+			margin: auto;
+			font-family:"Arial",Georgia,Serif;
+			display:inline-block;
+			text-align: center;
+
+		}
+		
+		a:link {
+			color: #fff;
+		}
+		
+.insta-photos{
+			padding: 5px;
+			overflow:hidden;
+			position: relative;
+			top: 5px;
+
+			}
+
+		
+
+		.insta-photos img{
+			width:300px;
+			height: 200px;
+			display:inline-block;
+			padding: 15px;
+			margin; 15px;
+	
+			box-shadow: 2px 2px 5px #330000;
+			border-radius: 5px 5px 5px 5px;
+			transition: all 1s;
+			
+		}
+
+		
+		.insta-photos  img:hover{
+			position: relative;
+			top: -30px;
+			left: 80px;
+			transform: scale(2);
+			transition: all 1s;
+			box-shadow: 2px 5px 5px red;
+
+			}	
+			
+			h1{
+			top: 15 px;
+			font-family: Arial, cursive;
+			font-size: 3em;
+			color: #000;
+			margin-top: 25px;
+			margin-left: 10px;
+			margin-bottom: 0px;
+			text-align: center;
+			background-color: #66ccff;
+			box-shadow: 2px 2px 5px #330000;
+			opacity: .9;
+		}
+			
+
+</style>
+
+<body>
+	<h1>President Obama and other Pictures</h1>
+	<div class = "insta-photos"></div>
+
+	<!--button>Get Next Page</button-->
+
+</body>
+</html>
