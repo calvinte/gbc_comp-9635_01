@@ -46,7 +46,7 @@
 	}
 	getNextPage();
 	/*vertical*/
-	/*$(window).scroll(function(){
+	$(window).scroll(function(){
 		var scrollFix = document.body.scrollTop || document.documentElement.scrollTop;
 		console.log(scrollFix);
 		console.log(window.innerHeight);
@@ -57,9 +57,9 @@
 			getNextPage();
 			}
 		
-		});*/
+		});
 		/*horizontal*/
-		$(window).scroll(function(){
+		/*$(window).scroll(function(){
 		var scrollFix = document.body.scrollLeft || document.documentElement.scrollLeft;
 		//console.log(scrollFix);
 		//console.log(window.innerWidth);
@@ -70,21 +70,9 @@
 			getNextPage();
 			}
 		
-		});
-		
-		/*horizontal wrapped yo*/
-		/*$(window).scroll(function(){
-		var scrollFix = $( ".insta-photos" ).scrollLeft || document.documentElement.scrollLeft;
-		//console.log(scrollFix);
-		//console.log(window.innerWidth);
-		//console.log($('.insta-photos').width());
-		
-		var threshold = 100;
-		if(scrollFix + window.innerWidth >= $('.insta-photos').width() - threshold){
-			getNextPage();
-			}
-		
 		});*/
+		
+		
 	
 	/*
 	$(document).ready(function(){
