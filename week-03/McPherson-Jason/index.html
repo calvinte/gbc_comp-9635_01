@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Week 3!</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"> </script>
+		<script>
+			var nexturl = 'https://api.instagram.com/v1/users/10206720/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f';
+			var loading = false;
+			console.log('test');
+			function getNextPage() {
+				if (loading) return;
+				loading = true;
+				console.log('getting page');
+				$.ajax({
+					type: 'GET',
+					dataType: 'jsonp',
+					cache: false,
+					url: nexturl,
+					success: function(response){
+						console.log(response);
+						nexturl= response.pagination.next_url;
+						response.data.forEach(function(media) {
+							var html = '';
+							html += '<img src="';
+							html += media.images.standard_resolution.url;
+							html += '">';
+							$('.insta-photos').append(html);
+						});
+						loading = false;
+					}
+					
+				});
+			}
+			getNextPage();
+			$(window).scroll(function() {
+				//console.log(document.body.scrollTop);
+				//cosole.log(window.innerHeight);
+				//console.log($('.insta-photos').height());
+				var threshold = 100;
+				if (document.body.scrollTop + window.innerHeight >= $('.insta-photos').height() - threshold) {
+					getNextPage();
+				}
+				
+			});
+			/*
+			$(document).ready(function() {
+				$('button').click(getNextPage);
+			});
+			*/
+		</script>
+		<style>
+		body {
+		background: #333333;
+		background-image: url('blue.jpg');
+		/*background-repeat: repeat-x*/
+		}
+		
+		h1{
+		text-align: center;
+		text-decoration: underline;
+		font-size: 35px;
+		color: white;
+		}
+		
+		.insta-photos {
+		/*border-radius: 50%;*/
+		/*padding: 5px 10px 5px 10px;*/
+		/*border: solid 1px;*/
+		/*width: 150px;*/
+		/*height: 200px;*/
+   		padding: 5px;
+   		overflow: hidden;
+   		position: absolute;
+   		}
+   		
+   		.insta-photos img{
+   		height: 200px;
+   		width: 230px;
+   		border-radius: 50%;
+   		border: solid 1px blue;
+   		}
+		
+		</style>
+	</head>
+	<body>
+	
+	<h1>President Obama's Instagram photos</h1>
+		<div class="insta-photos"></div>
+		<!--button>Get Next page</button--!>
+	</body>
+
+</html>
