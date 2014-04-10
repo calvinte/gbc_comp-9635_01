@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+
+<title>Jason's Travels!!</title>
+
+<style>
+	html, body,
+	#map-canvas {
+		height: 75%;
+		margin: 10px ;
+		padding: 0
+		width: 100%;
+}
+
+
+
+h1{
+text-align: center;
+text-decoration: underline;
+font-size: 35px;
+}
+
+p{
+text-align: center;
+}		
+	
+.col-left{
+	padding: 5px 5px 5px 10px;
+	background-color: #282827;
+	border-radius: 25px 0 0 25px;
+	width:650px;
+	float:left;
+	margin-right: 15px;
+	text-align:center;
+}
+
+.main-content{
+	padding: 15px;
+	background-color: rgba(240,240,240,0.6);
+	overflow: hidden;
+	text-align:center;
+}
+
+</style> 
+
+
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+<script type="text/javascript">
+navigator.geolocation.getCurrentPosition(function(position) {
+	console.log(position);
+	var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	var map = new google.maps.Map(document.getElementById('map-canvas'), {
+		zoom: 2,
+		center: myLatLng,
+	});
+	//Toronto
+	new google.maps.Marker({
+		map: map,
+		position: myLatLng,
+	});
+	//Miami
+	new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng(25.7877, -80.2241),
+	});
+	//Jamaica
+	new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng(18.1824, -77.3218),
+	});
+	//Cuba
+	new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng(22.0000, -79.5000),
+	});
+//});
+	//console.log(navigator);
+//console.log(google);
+//google.maps.event.addDomListener(window, 'load', function() {
+
+});
+</script>
+
+</head>
+
+<body>
+
+
+
+<div id='map-canvas'></div>
+
+
+<h1>Come Travel With Me!!</h1>
+
+<div class="main-content">
+		<div class="col-left">
+
+<br>
+
+<div align="center"><h2> Why I love German Vehicles </h2></div>
+
+
+<p>
+The map above points of a few of the places that I have travelled to thus far, and also one place where I really hope to travel 
+one day, which is the beautiful island of Cuba.
+</p>
+</br>
+
+
+<h2> Toronto </h2>
+<p>
+
+<img src="toronto_night_skyline.jpg" alt="audi coupe" align="left" width="100" height="100" />
+Toronto, Ontario is the beautiful place that I call home. This exquisite metropolitan is one of the most popular and populous cities in the world
+which is home to many great sports teams and a very diverse multicultural community.
+</p>
+
+<h2> Miami </h2>
+
+<p>
+<img src="images.jpeg" alt="benzi" align="left" width="100" height="100"     />
+The first time I went to miami a few years ago I fell in love with this beautiful city, it is as beautiful as its people and i hope to go back one day soon!
+</p>
+
+<h2> Jamaica </h2>
+
+<p>
+<img src="He-was-a-Rastafarian.jpg" align="left"  width="100" height="100" />
+The famous island of Jamaica where my parents call home had me inlove the first time I went. I every time I go I never want to leave 
+because the rhythms and the food make me never want to leave.
+</p>
+
+<h2> Cuba </h2>
+
+<p>
+<img src="woman-with-typical-clothes-and-a-huge-cuban-cigar-in-havana-cuba-1600x1066.jpg" alt="auto" align="left" width="100" height="100"   />
+The birthplace of my grandmother is one place I long to go. I hope to travel here one day and see the beauty that this wonderful place has to
+offer!
+</p>
+
+</div>
+</div>
+
+
+</body>
+</html>
