@@ -3,11 +3,27 @@
 	<head>
 		<title>Google Maps Time!!!</title>
 		<style>
+		p{		text-align:center;
+		color:#ffffff;
+		font-family:"arial";}
+			
+			
+			li{		text-align:left;
+			margin-left: 30px;
+		
+		color:#ffffff;
+		font-family:"arial";}
+		h1
+		{
+		text-align:center;
+		color:#ffffff;}
 			html, body, #map-canvas {
-			height: 100%;
-			margin: 0;
+			height: 90%;
+			background-color:#6495ed;
 			padding: 0;
-			width: 100%;
+			width: 90%;
+			margin-left:auto;
+margin-right:auto;
 			}
 		</style>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
@@ -19,7 +35,6 @@
 					zoom: 3, 
 					center: myLatLng,
 				});
-			
 			
 				new google.maps.Marker({
 					map: map,
@@ -205,10 +220,14 @@
 				});
 			}); 
 			
+			
+			
 			</script>
 	</head>
 	
 	<body>
+	<h1> Places I have visited </h1>
 	<div id="map-canvas"></div>
+	<p><ul><li>Toronto ON</li> <li>Quebec City Quebec</li><li>Florida</li><li>California</li><li>Stamford, CT</li><li>New York</li><li>El Salvador</li><li>Galapagos</li><li>Ecuador</li><li>Cuba</li><li>Bahamas</li></ul><p>
 	</body>
 </html>
