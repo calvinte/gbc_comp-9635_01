@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Week 3</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+     <script type="text/javascript">
+     var nexturl = "https://api.instagram.com/v1/users/185048560/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f";
+     var loading = false;
+     function getNextPage(){
+      if (loading) return;
+      loading = true;
+      console.log("getting page");
+        $.ajax({
+          type: "GET",
+          dataType: "jsonp",
+          cache: false,
+          url: nexturl,
+          success: function(response){
+            nexturl = response.pagination.next_url;
+            response.data.forEach(function(media) {
+              var html = '';
+              html += '<img src="';
+              html += media.images.standard_resolution.url;
+              html += '">';
+              $('.insta-photos').append(html);
+            });
+            loading = false;
+          }
+        });
+      }
+      getNextPage();
+      $(window).scroll(function() {
+        var scrollFix = document.body.scrollTop || document.documentElement.scrollTop;
+        console.log(document.body.scrollTop); //tells you in pixels how far you're scrolling
+        console.log(window.innerHeight);
+        console.log($('.insta-photos').height());
+        var threshold = 100;
+        if (scrollFix + window.innerHeight >= $('.insta-photos').height() - threshold){
+          getNextPage();
+      }
+
+
+      });
+     /* $(document).ready(function() {
+        $('button').click(getNextPage);
+      });*/
+    </script>
+  </head>
+ <body>
+  <h1>Infinite scroll time...</h1>
+  <div id="infinity"><img src="Infinity.jpg"/></div>
+  <div class="insta-photos"></div>
+  <!--<button>Get next Page</button>-->
+</body>
+</html>
