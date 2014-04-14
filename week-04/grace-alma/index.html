@@ -3,14 +3,56 @@
 	<head>
 		<title>My favourite places</title>
 		<style>
-			html, body, #map-canvas, #future-canvas {
+			#map-canvas, #future-canvas {
 				height: 60%;
 				margin: 30px;
 				padding: 0;
-				
 				background: light blue;
 				width: auto%;
 			}
+	
+			h1{
+				font-family:"Times New Roman", Cursive;
+				font-size: 2.5em;
+				color: #000;
+				margin: 30px;
+
+
+			}
+
+			h3{
+				font-family:"Times New Roman", Cursive;
+				font-size: 1em;
+				color: #000088;
+				margin: 30px;
+			
+			}
+			
+			h2{
+				color: #000;
+				font-size: 1.5em;
+				text-decoration: underline;
+				margin: 30px;
+			}
+			
+			h4{
+				font-family:"Times New Roman", Cursive;
+				font-size: 18px;
+				font-weight: bold;
+				color: #000;
+				margin: 30px;
+			
+			}
+
+			p{
+				font-family: Arial, cursive;
+				font-size: 16 px;
+				color: #000;
+				margin: 50px;
+		
+			}
+	
+	
 	
 		</style>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
@@ -28,27 +70,47 @@
    				map: map,
    				position: myLatLng,
    			});
-   		
+			
+			//Masinloc, Zambales
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(15.5385323,120.0597381),
+   			});
+			
+			//Manila, Philippines
+   			 new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(14.5980716,120.9797033),
+   			});	
+			
+			//Marriot Hotel, Niagara Falls, Ontario
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(43.078119,-79.0826225),
+   			});			
+			
+			// Punta Cana, Dominican Republic
    			new google.maps.Marker({
    				map: map,
    				position: new google.maps.LatLng(18.734543,-68.46609),
    			});
-   			new google.maps.Marker({
-   				map: map,
-   				position: new google.maps.LatLng(36.102372,-115.174556),
-   			});
+			
+			//Boracay, Philippines
    			new google.maps.Marker({
    				map: map,
    				position: new google.maps.LatLng(11.9692999,121.9272753),
    			});
-   			
+			
+			//Las Vegas, Nevada, USA
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(36.102372,-115.174556),
+   			});
+			
+   			//Cozumel, Mexico
    			new google.maps.Marker({
    				map: map,
    				position: new google.maps.LatLng(20.551209,-86.925944),
-   			});
-   			 new google.maps.Marker({
-   				map: map,
-   				position: new google.maps.LatLng(14.5980716,120.9797033),
    			});
    		});
    		
@@ -60,12 +122,47 @@
    				center: myLatLng,
    				
    			});
+			
    			
    			new google.maps.Marker({
    				map: map,
    				position: myLatLng,
    			});
-   			  		});
+			
+			//Rome, Italy
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(41.9100711,12.5359979),
+   			});
+			
+			//London Bridge, London, United Kingdom
+   			 new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(51.507929,-0.087709),
+   			});	
+			
+			//San Francisco, California, USA
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(37.7577,-122.4376),
+   			});			
+			
+			// Seattle, Washington, USA
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(47.614848,-122.3358423),
+   			});
+
+			// Paris, France
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(48.8588589,2.3470599),
+   			});			
+				
+   		});
+					
+					
+					
    		</script>
    		
    	</head>
@@ -74,19 +171,74 @@
 	<div class="header">
 		<h1>MY FONDEST MEMORIES</h1>
 	</div>
-	<div id="map-canvas"></div>
-	
-	<p>I have been to many places, but my fondest memories are in the following:</p>
+	<div id="map-canvas">
+	</div>
+	<h2>Favourite Places</h2>
+	<h4>I have been to many places, but my fondest memories are in the following:</h4>
+
+
 	<div>
-	<h2>Toronto, Ontario</h2>
-	<p>I live and work here blah blah</p>
+
+		<h3>Masinloc, Zambales, Philippines</h3>
+		<p>I was born and raised here.</p>
+
+		<h3>Manila, Philippines</h3>
+		<p>I attended college in Manila and worked in Manila for so many years.</p>
+
+		<h3>Marriot, Niagara Fallsview, Ontario</h3>
+		<p>This is where I got married. Beautiful place.</p>
+
+		<h3>Punta Cana, Dominican Republic</h3>
+		<p>A week of paradise during our honeymoon. Unforgettable place.</p>
+
+		<h3>Boracay, Philippines</h3>
+		<p>Another two weeks of paradise. Beautiful place, yummy food, amazing beach and wonderful people. 
+		And, I get to visit my family!</p>
+		
+		<h3>Las Vegas, Nevada, USA</h3>
+		<p>My husband and I spent 10 days in Las Vegas. Nice weather, good food, good deals in the mall! 
+		Although, if I think about the money I lost in the slot machines, it spoiled the fun! Still, it was enjoyable. </p>
+		
+		<h3>Cozumel Mexico</h3>
+		<p>Another favourite two weeks in my life. My husband and I spent Christmas last year in Cozumel with couple of friends. 
+		I love the place, love the food and love the company!</p>
 
 	</div>
-	<div id="future-canvas"></div>
-	<p>I dream about going to the following places in the world like :</p>
+	
+	<div id="future-canvas">
+
+	</div>
+	<h2>Future Trips</h2>
+	<h4>I dream about going to the following places in the world:</h4>
+	
 	<div>
-	<h2>London</h2>
-	<p>I live and work here blah blah</p>	
+		<h3>Rome, Italy</h3>
+		<p>Foremost, I would like to see the Vatican and maybe meet the Pope in person. 
+		And then, we can take this incredible Rome day trip to the Amalfi Coast, and discover the dreamy coastal scenery of southern Italy.</p>
+
+		<h3>London Bridge, London</h3>
+		<p>A trip to London will be very exciting. I would like to see the London Bridge and the Royal London. 
+		If there is an opportunity, I would like to live like a princess! Maybe pretend...</p>
+		
+		<h3>San Francisco, California, USA</h3>
+		<p>I always dream to see the Golden Gate and the Aquarium of the Bay.  
+		My friend also mentioned Fisherman's wharf, wax museum, Ripley's Believe it or not.
+		And then, go shopping at the Union Square and take a walk at the North Beach and Chinatown!
+		</p>
+		
+		<h3>Seattle, Washington, USA</h3>
+		<p>It will be interesting to see the Pike Market Place where vendors gleefully toss salmon to each other and crack jokes. 
+		And then visit the Seattle Center, a cultural complex where you could easily spend hours at the Pacific Science Center, 
+		Chihuly glass display, food court, theatres or simply watching kids frolic in a giant outdoor fountain. We would probably try
+		 riding the Washington State Ferry and the Space Needle! Or take a stroll in the Olympic Sculpture Park.
+		</p>
+		
+		<h3>Paris, France</h3>
+		<p>I would like to see the Eiffel Tower and enjoy dinner at the Eiffel Tower's 58 Tour Eiffel restaurant. 
+		Then see the Louvre Museum and the Notre Dame Cathedral. A visit to the home of the Cancan, the famous Moulin 
+		Rouge in bohemian Montmartre will also be great. Or, even just taking a stroll, sipping coffee and go shopping!
+		</p>
+	</div>
 	
 	</body>	
 	
