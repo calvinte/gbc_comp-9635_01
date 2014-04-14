@@ -18,9 +18,6 @@
    		navigator.geolocation.getCurrentPosition(function(position) {
    			console.log(position);
    				var myLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-				var myCenter=new google.maps.LatLng(51.508742,-0.120850);
-				var myContent="";
-				var infowindow="";
    				var map = new google.maps.Map(document.getElementById('map-canvas'), {
    				zoom: 2,
    				center: myLatLng,
@@ -35,24 +32,10 @@
    			new google.maps.Marker({
    				map: map,
    				position: new google.maps.LatLng(18.734543,-68.46609),
-				myCenter=new google.maps.LatLng(18.734543,-68.46609);
-				infowindow = new google.maps.InfoWindow({
-  content:"First Location"
-     			});
-				  google.maps.event.addListener(marker, 'click', function() {
-				  infowindow.open(map,marker);
-				  });
    			});
    			new google.maps.Marker({
    				map: map,
    				position: new google.maps.LatLng(36.102372,-115.174556),
-				myCenter=new google.maps.LatLng(36.102372,-115.174556);
-				infowindow = new google.maps.InfoWindow({
-  content:"First Location"
-     			});
-				  google.maps.event.addListener(marker, 'click', function() {
-				  infowindow.open(map,marker);
-				  });
    			});
    			new google.maps.Marker({
    				map: map,
@@ -84,8 +67,6 @@
    			});
    			  		});
    		</script>
-		
-
    		
    	</head>
 
