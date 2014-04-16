@@ -24,21 +24,36 @@ html, body, #map-canvas{
 		
 	var map = new google.maps.Map(document.getElementById('map-canvas'),{
 			zoom: 15,
+			//mapTypeId: google.maps.MapTypeId.SATELLITE,
 			center:new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
 			
-	});
-
+		});	
+		//map.setTilt(45);
+		
+		var store = [];
+		
 		var myAddress = prompt("whats your address?");
 		//geocoder fining location without lat lng	
+		store.push(myAddress);
+		
+		
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			address: myAddress,
 		}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-			  //map.setCenter(results[0].geometry.location);
-			  var marker = new google.maps.Marker({
+			  map.setCenter(results[0].geometry.location);
+			 
+   var marker = new google.maps.Marker({
 				  map: map,
-				  position: results[0].geometry.location
+				   icon: {
+      					path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+      				scale: 5
+    				},
+				  animation: google.maps.Animation.DROP,
+				  position: results[0].geometry.location,
+				  content: myAddress,
+				
 			  });
 			}
 		});
@@ -49,23 +64,22 @@ html, body, #map-canvas{
 
 
 		});
-	
-	
-	
-	
+		
+	console.log(store)
 	
 	//console.log(google.maps);
 	
 	//are you local?
-	var coordsLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	if (myLatLng == coordsLoc){
-		console.log("you're local!");
-		}else {
-			console.log("sorry you're not from here, you're from" + coordsLoc );
-			}
-	
+	//var coordsLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	//if (myLatLng == coordsLoc){
+	//	console.log("you're local!");
+		//}else {
+		//	console.log("sorry you're not from here, you're from" + coordsLoc );
+		//	}
 
+	
 	});
+	;
 
 </script>
 </head>
