@@ -9,8 +9,7 @@
 			height:100%;
 			margin:0;
 			padding:0px;
-			width: 100%;
-			
+			width: 100%;			
 			}
 		
 		body {
@@ -36,22 +35,18 @@
 		 }
 
 		#interface{
-<<<<<<< HEAD
+
             width: 400px;
 			top:40px;
 			left: 100px;
-=======
-
-			top:100px;
+            top:100px;
 			left: 100px;
 			bottom: 100px;
 			right: 100px;
->>>>>>> FETCH_HEAD
 			position:absolute;
 			z-index: 1;
 			overflow: hidden;
 			box-sizing:border-box;
-<<<<<<< HEAD
 			background-color: rgba(255,255,255,0.6)
 			}
 
@@ -60,49 +55,10 @@
 			z-index: 3;
 			padding: 2px;
 			height:30px;
-			color:#000;
-			
+			color:#000;			
 		}
 
-		
-=======
-			background-color: rgba(255,255,255,0.4)
-			}
-
-		.madrid{
-			top: 470px;
-			left: 1850px;
-			z-index: 3;
-			position: absolute;
-			padding: 2px;
-			height:30px;
-			color:#fff;
-			background-color: rgb(1,1,1)
-		}
-
-		.tenerife{
-			top: 550px;
-			left: 1350px;
-			z-index: 3;
-			position: absolute;
-			padding: 2px;
-			height:30px;
-			color:#fff;
-			background-color: rgb(1,1,1)	
-
-		}
-		.geneva{
-			top: 390px;
-			left: 2038px;
-			z-index: 3;
-			position: absolute;
-			padding: 2px;
-			height:30px;
-			color:#fff;
-			background-color: rgb(1,1,1)
-
-		}
->>>>>>> FETCH_HEAD
+	
 
 
 
@@ -116,7 +72,7 @@
 		console.log(position);
 		 	var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
-<<<<<<< HEAD
+
         		zoom: 2,
         		center: myLatLng, 
         	});
@@ -147,8 +103,8 @@
   			this.info.open(map, marker);
 			});*/
 
+        	} /*funtion ends*/
         	
-        	}
 
         	markPlace (43.7000, -79.4000, "I live here now");
         	/*Toronto */
@@ -172,7 +128,7 @@
         	/*trinidad and tobago  */
         	
         	/*
-=======
+
         		zoom: 4,
         		center: myLatLng, 
         	});
@@ -198,7 +154,7 @@
         		map: map,
         		position: myLatLng,
         		anitmation: google.
->>>>>>> FETCH_HEAD
+
         	});
         	new google.maps.Marker({
         		map: map,
@@ -237,14 +193,13 @@
 
         	new google.maps.Marker({
         		map: map,
-<<<<<<< HEAD
-=======
+
         		position: new google.maps.LatLng(45.5000, -73.5667)
         	}); /* Montreal 
 
         	new google.maps.Marker({
         		map: map,
->>>>>>> FETCH_HEAD
+
         		position: new google.maps.LatLng(12.1833, -69.0000)
         	}); /* curacao 
 
@@ -270,9 +225,8 @@
 		</script>
 	</head>
 	<body>
-<<<<<<< HEAD
-	<div id="interface"><h1>Places I've Been to</h1>
 
+	<div id="interface"><h1>Places I've Been to</h1>
     <div class="city"><h2>Venezuela:</h2></div>
      <div class="city"><h3>Caracas</h3></div>
      <div class="city"><h3>Merida</h3></div>
@@ -288,22 +242,8 @@
     <div class="city"><h2>Canada:</h2></div>
      <div class="city"><h3>Toronto</h3></div>
      <div class="city"><h3>Quebec City</h3></div>
-     
-    
-=======
-	<div id="interface"><h1>Places I've Been</h1>
+   
 
-    <div class="madrid"><h3>Madrid</h3></div>
-    <div class="geneva"><h3>Geneva</h3></div>
-     <div class="tenerife"><h3>Tenerife</h3></div>
-     <div class="caracas"><h3>Caracas</h3></div>
-     <div class="merida"><h3>Merida</h3></div>
-     <div class="quebec"><h3>Quebec City</h3></div>
-     <div class="montreal"><h3>Montreal</h3></div>
-     <div class="curacao"><h3>Curacao</h3></div>
-     <div class="aruba"><h3>Aruba</h3></div>
-     <div class="trinidad"><h3>Trinidad</h3></div>
->>>>>>> FETCH_HEAD
      
 	</div>
 
