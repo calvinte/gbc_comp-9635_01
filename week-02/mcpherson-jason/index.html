@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Testing</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$.ajax({
+				type: 'GET',
+				dataType: 'jsonp',
+				url: 'https://api.instagram.com/v1/users/230199680/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f',
+				success: function(response) {
+					console.log(response);
+					response.data.forEach(function(photo) {
+					console.log(photo);
+					console.log(photo.link);
+					$('.insta-photos').append('<a href="' + photo.link +'"><img src=" '+ photo.images.standard_resolution.url +' "></a> ');
+					});
+				},
+			});
+	</script>
+	
+	<style type="text/css">
+		body{
+			background: #333333;
+		}
+		
+		h1{
+			font-family: Arial,sans-serif;
+			font-size: 50px;
+			text-align: center;
+			margin-top: 25px;
+			margin-bottom: 0px;
+			margin-left: 10px;
+			text-decoration: underline;
+			border: 5px solid;
+		}
+		
+		p{
+			font-size: 30px;
+			text-align: center;
+		}
+		
+		insta-photos{
+			
+			width: 750px;
+			margin: auto;
+		}
+		
+	</style>
+	</head>
+<body>
+<h1>Oh, hi. Welcome to my Instagram photos</h1>
+<div class="insta-photos"></div>
+<p>thanks for taking a look!</p>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	
+	
+	<head>
+		<title>Testing Pictures</title>
+		<script type ="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script type ="text/javascript">
+			$.ajax({
+				type: 'GET',
+				dataType: 'jsonp',
+				url: 'https://api.instagram.com/v1/users/230199680/media/recent?client_id=585d00be2af34a26b0e1caa6995cf19f',	
+				success: function(response) {
+					console.log(response);
+					response.data.forEach(function(photo) {
+						console.log(photo);
+						console.log(photo.link);
+						//document.body.innerHTML += '<img src + photo.images.standard_resolution.url + '">';
+						$('.insta-photos').append('<a herf="' + photo.link +'"><img src= "' + photo.images.standard_resolution.url + '"></a>'
+						);
+				});
+				},			
+							
+				});				
+		
+				
+				
+	</script>			
+	</head>
+		<body>
+		<h2>Different Photos</h2>
+			<div class="insta-photos"></div>	
+		
+			
+		</body>
+
+
+
+</html>

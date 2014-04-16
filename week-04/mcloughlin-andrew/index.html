@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>google Maps API</title>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+<style>
+html, body, #map-canvas{
+	height:100%;
+	width:100%;
+	padding:0;
+	margin:0;
+	}
+</style>
+<script>
+		console.log(navigator);
+	
+	//geo ip
+	navigator.geolocation.getCurrentPosition(function(position){
+		//console.log(position);
+		
+		var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		
+	var map = new google.maps.Map(document.getElementById('map-canvas'),{
+			zoom: 15,
+			center:new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+			
+	});
+
+		var myAddress = prompt("whats your address?");
+		//geocoder fining location without lat lng	
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			address: myAddress,
+		}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+			  //map.setCenter(results[0].geometry.location);
+			  var marker = new google.maps.Marker({
+				  map: map,
+				  position: results[0].geometry.location
+			  });
+			}
+		});
+		//marker
+		new google.maps.Marker({
+		map: map,
+		position: myLatLng,
+
+
+		});
+	
+	
+	
+	
+	
+	//console.log(google.maps);
+	
+	//are you local?
+	var coordsLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	if (myLatLng == coordsLoc){
+		console.log("you're local!");
+		}else {
+			console.log("sorry you're not from here, you're from" + coordsLoc );
+			}
+	
+
+	});
+
+</script>
+</head>
+
+<body>
+
+<div id="map-canvas"></div>
+
+</body>
+</html>
