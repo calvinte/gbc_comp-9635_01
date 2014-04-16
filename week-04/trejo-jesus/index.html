@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Google Maps Time!!!</title>
+    	<style type="text/css">
+    	@import url(http://fonts.googleapis.com/css?family=Antic+Slab);
+	html, body, #map-canvas {
+
+			height:100%;
+			margin:0;
+			padding:0px;
+			width: 100%;			
+			}
+		
+		body {
+		 background-color: #DCD8D8;
+		 font-family: 'Antic Slab', serif;
+		 font-size: 15px;
+		 color: #000;
+		}
+
+		h1 {
+		 font-size: 2.500em; 
+		 font-weight: bold;
+		 margin-top: 10px;
+		 height: 30px;
+		 text-align: center;
+		z-index: 2;
+		}
+		
+		h3{
+		font-size: 0.938em; 
+		 font-weight: bold;
+		 
+		 }
+
+		#interface{
+
+            width: 400px;
+			top:40px;
+			left: 100px;
+            top:100px;
+			left: 100px;
+			bottom: 100px;
+			right: 100px;
+			position:absolute;
+			z-index: 1;
+			overflow: hidden;
+			box-sizing:border-box;
+			background-color: rgba(255,255,255,0.6)
+			}
+
+		.city{
+			margin-left: 50px;
+			z-index: 3;
+			padding: 2px;
+			height:30px;
+			color:#000;			
+		}
+
+	
+
+
+
+	</style>
+		
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false">
+		</script>
+
+		<script type="text/javascript">
+        navigator.geolocation.getCurrentPosition(function(position){
+		console.log(position);
+		 	var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		 	var map = new google.maps.Map(document.getElementById('map-canvas'), {
+
+        		zoom: 2,
+        		center: myLatLng, 
+        	});
+			function markPlace (lat, lng, note){
+        		var marker = new google.maps.Marker ({
+        		map: map,
+        		position: new google.maps.LatLng (lat,lng),
+        		clickable: true,
+        		animation: google.maps.Animation.DROP
+        	});
+			
+			marker.note = note;
+			google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.content = this.note;
+        infoWindow.open(this.getMap(), this);
+    });
+    return marker;
+
+
+			
+/*tried two ways add info notes to the markers but didn't work. One removed all the markers
+        		marker.info = new google.maps.InfoWindow({
+  				content: '<b>Speed:</b> ' + values.inst + ' knots'
+				});
+
+			google.maps.event.addListener(marker, 'click', function() {
+  			
+  			this.info.open(map, marker);
+			});*/
+
+        	} /*funtion ends*/
+        	
+
+        	markPlace (43.7000, -79.4000, "I live here now");
+        	/*Toronto */
+        	markPlace (8.6000, -71.1500, "I was born here");
+        	/*Merida */
+        	markPlace (10.5000, -66.9167, "Lived here for 6 years");
+        	/*Caracas */
+        	markPlace (40.4000, -3.6833, "Visited in 2008");
+        	/*Madrid */
+        	markPlace (28.2686, -16.6056, "Lived here for one year");
+        	/*Tenerife  */
+        	markPlace (46.2000, 6.1500, "Visited in 2007");
+        	/*Geneva */
+        	markPlace (46.8167, -71.2167, "Visited in 2013");
+        	/*Quebec City */
+        	markPlace (12.1833, -69.0000, "Visited in 2006");
+        	/*Curacao  */
+        	markPlace (12.5000, -69.9667, "Visited in 2005");
+        	/*Aruba  */
+        	markPlace (10.6667, -61.5167, "Visited in 2009");
+        	/*trinidad and tobago  */
+        	
+        	/*
+
+        		zoom: 4,
+        		center: myLatLng, 
+        	});
+
+        	function openWindow (lat, lng, text){
+        		var marker = new google.maps.Marker ({
+        		map: map,
+        		position: new google.maps.LatLng (lat,lng)
+        		
+        	});
+        		var infowindow = new google.maps.InfoWindow({
+        			context: text,
+        	});
+
+        		google.maps.event.addListener(marker, 'click', function(){
+        			infowindow.open(map, marker);
+			});
+        	}
+
+        	openWindow (43.7000, -79.4000, "I live here now");
+        	/*
+        	new google.maps.Marker({
+        		map: map,
+        		position: myLatLng,
+        		anitmation: google.
+
+        	});
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(8.6000, -71.1500)
+        	});/*Merida 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(10.5000, -66.9167)
+        	});/*Caracas 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(10.1810, -68.0040)
+        	});/*Caracas 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(40.4000, -3.6833)
+        	});/*Madrid 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(28.2686, -16.6056)
+        	}); /*Tenerife 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(46.2000, 6.1500)
+        	}); /*Geneva 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(46.8167, -71.2167)
+        	}); /* Quebec City 
+
+        	new google.maps.Marker({
+        		map: map,
+
+        		position: new google.maps.LatLng(45.5000, -73.5667)
+        	}); /* Montreal 
+
+        	new google.maps.Marker({
+        		map: map,
+
+        		position: new google.maps.LatLng(12.1833, -69.0000)
+        	}); /* curacao 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(12.5000, -69.9667)
+        	}); /* aruba 
+
+        	new google.maps.Marker({
+        		map: map,
+        		position: new google.maps.LatLng(10.6667, -61.5167)
+        	}); /* trinidad 
+
+			*/
+
+
+
+
+        });
+
+
+       
+		</script>
+	</head>
+	<body>
+
+	<div id="interface"><h1>Places I've Been to</h1>
+    <div class="city"><h2>Venezuela:</h2></div>
+     <div class="city"><h3>Caracas</h3></div>
+     <div class="city"><h3>Merida</h3></div>
+     <div class="city"><h2>Caribean:</h2></div>
+      <div class="city"><h3>Curacao</h3></div>
+     <div class="city"><h3>Aruba</h3></div>
+     <div class="city"><h3>Trinidad</h3></div>
+     <div class="city"><h2>Spain:</h2></div>
+     <div class="city"><h3>Madrid</h3></div>
+    <div class="city"><h3>Tenerife</h3></div>
+    <div class="city"><h2>Europe:</h2></div>
+    <div class="city"><h3>Geneva</h3></div>
+    <div class="city"><h2>Canada:</h2></div>
+     <div class="city"><h3>Toronto</h3></div>
+     <div class="city"><h3>Quebec City</h3></div>
+   
+
+     
+	</div>
+
+    <div id="map-canvas"></div>
+  	</body>
+</html>
+
