@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+ <head>
+   <title>Google Maps Time !!!</title>
+   <style>
+    html,body{
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      
+      }
+      #map-canvas, .thesecond{
+      width: 60%;
+      height: 60%;
+      margin:10px 10px 10px 10px;
+      border: dotted red 4px;
+      }
+      .thesecond{
+      width: 60%; 
+       height: 40%;
+      margin:10px 10px 10px 10px;
+      border: dotted red 4px;
+      background-color: #CCFF99;
+      }
+      span{ display:block;}
+   </style>
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+   <script type="text/javascript">
+    // console.log(google);
+     //  console.log(navigator);
+       navigator.geolocation.getCurrentPosition(function(position){
+          console.log(position);
+          var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);	
+       	  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+     		zoom: 2,
+     		//center: new google.maps.LatLng(43.7000 , -79.4000 ),
+     	  	//center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+     	  		center: myLatLng,
+     	});
+			new google.maps.Marker({
+			map: map,
+			//position: new google.maps.LatLng(0, 0),
+				position: myLatLng,
+			});  
+			new google.maps.Marker({
+			map: map,
+			//position: new google.maps.LatLng(0, 0),
+				position: new google.maps.LatLng(0,0),
+			});  
+			new google.maps.Marker({
+			map: map,
+			//position: new google.maps.LatLng(0, 0),
+				position: new google.maps.LatLng(18.5529675,-68.3978913, 12),
+			});     
+			  new google.maps.Marker({
+			map: map,
+			//position: new google.maps.LatLng(0, 0),
+				position: new google.maps.LatLng(36.1270939,-115.1446899,11),
+			});  
+			  new google.maps.Marker({
+			  map: map,
+			//position: new google.maps.LatLng(0, 0),
+				position: new google.maps.LatLng(35.673343,139.710388,12),
+			});   
+       
+       		
+       		
+       });
+       //google.maps.event.addDomListener(window, 'load', function() { 
+     
+     
+    // });
+     </script>
+ </head>
+ 
+ <body>
+  <div id="map-canvas"></div>
+  <div class="thesecond"> 
+  
+  	<h2>Las vegas  </h2> 
+  		<span> Hope to be there some day  </span>
+    <h2>Japan </h2>
+    	<span> Hope to visit some day </span>
+	<h2>Centre of the ocean </h2>
+    	<span> The default of google maps </span>
+	 <h2>Punta Cana, Dominican Republic </h2>
+    	<span> Hope to go on vacation </span>
+	<h2>Toronto, Canada </h2>
+    	<span> Where I live </span>
+    
+  </div> 
+ </body>
+ 
+ </html>

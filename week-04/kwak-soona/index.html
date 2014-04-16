@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Google Maps Time</title>
+		<style>
+			html, body	{
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+			}
+
+			#map-canvas {
+				height: 100%;
+				width: 100%;
+				z-index: 1;
+			}
+
+			h2 {
+				color:#83adb5;
+				text-align: center;
+				font-weight: bold;
+				font-family: helvetica, sans-serif;
+
+			}
+
+
+		</style>
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script type="text/javascript">
+			//console.log(navigator);
+			//reference check https://developer.mozilla.org/en/docs/WebAPI/Using_geolocation
+			navigator.geolocation.getCurrentPosition(function(position) {
+				console.log(position);
+				var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				var map = new google.maps.Map(document.getElementById('map-canvas'), {
+				
+			//google.maps.event.addDomListener(window, 'load', function() {
+				//new google.maps.Map(document.getElementById('map-canvas'), {
+					zoom: 12,
+					center: myLatLng,
+					//center: new google.maps.LatLng(43.7797, -79.4156),
+				});
+
+				/*var marker=	new google.maps.Marker({
+				map: map,			
+				});*/
+
+				marker=new google.maps.Marker ({
+					position:myLatLng,
+					animation:google.maps.Animation.BOUNCE
+				});
+
+				marker.setMap(map)
+
+				var infowindow = new google.maps.InfoWindow({
+					content:"Home"
+				});
+
+				/*function openWindow (lat, lng, text) {
+					var marker = new google.maps.Marker ({
+						map:map,
+						position: new google.maps.LatLng(lat, lng)
+					});
+				
+					var infowindow = new google.maps.InfoWindow({
+						content: text,
+					});
+					
+				}
+
+				openWindow(35.8167,127.1500, "this is where i live");*/
+
+
+				new google.maps.Marker({
+				map: map,
+				position: new google.maps.LatLng(35.8167, 127.1500), //Jeonju
+				
+				});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(49.2500, -123.1000), //Vancouver
+					
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(40.6700, -73.9400), //New York
+					
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(28.1000, -81.6000), //Florida
+
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(23.1333, -82.3833), //Cuba
+
+					});
+
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(41.9000, 12.5000), //Rome
+
+				});
+				
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(37.9667, 23.7167), //Athens
+					
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(35.2100, 24.9100), //Crete
+					
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(36.4167, 25.4333), //Santorini
+					
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(35.2100, 24.9100), //Crete
+					
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(51.5072, -0.1275), //London
+
+					});
+
+				new google.maps.Marker({
+					map: map,
+					position: new google.maps.LatLng(48.8567, 2.3508), //Paris
+
+					}); 
+					
+					google.maps.event.addListener(marker,'click',function(){
+					infowindow.open(map,marker);
+				}); 
+
+				
+
+				//});
+			});
+
+			//google.maps.event.addDomListener(window,'load',initialize);
+		</script>
+	</head>
+
+<body>
+ <h2> All the Places I visited and lived so far.... </h2>
+ <p> The bouncing marker is where I currently reside!! </p>
+	<div id="map-canvas"></div>
+</body>
+
+
+</html>
