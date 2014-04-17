@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+	<head>
+		<title>New 7 Wonders of Nature</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+	var latlng = new google.maps.LatLng('35.1697515', '33.4366038');
+				var mapOptions = {
+					center: latlng,
+					zoom: 4
+					};
+					var map = new google.maps.Map($('#map')[0], mapOptions);
+					
+					var wonders = [
+					{
+							name:'<h2>Iguazu Falls</h2>',
+						description: '<p> guazu Falls, Iguazú Falls, Iguassu Falls or Iguaçu Falls (Portuguese: Cataratas do Iguaçu [kataˈɾatɐʒ du iɡwaˈsu]; Spanish: Cataratas del Iguazú [kataˈɾatas ðel iɣwaˈsu]; Guarani: Chororo Yguasu [ɕoɾoɾo ɨɣʷasu]) are waterfalls of the Iguazu River on the border of the Argentine province of Misiones and the Brazilian state of Paraná. The falls divide the river into the upper and lower Iguazu. The Iguazu River rises near the city of Curitiba. The river flows through Brazil for most of its course, although most of the falls are on the Argentine side. Below its confluence with the San Antonio River, the Iguazu River forms the boundary between Argentina and Brazil.</p>',
+						image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/8/83/Iguacu-004.jpg">',
+						lat: '-25.686667',
+						lng: '-54.444722',
+							
+							},
+							{
+							name:'<h2>Jeju Island</h2>',
+							description:'<p>Jeju Province (officially the Jeju Special Autonomous Province[1]) is one of the nine provinces of South Korea. The province is situated on and coterminous with the nation\'s largest island of Jeju (also Jejudo; see Naming below), formerly transliterated as Cheju, Cheju Do, etc., or known as Quelpart to Europeans. The island lies in the Korea Strait, southwest of South Jeolla Province, of which it was a part before it became a separate province in 1946. Its capital is Jeju City. The island contains the natural World Heritage Site Jeju Volcanic Island and Lava Tubes.[2] Jeju Island has a temperate climate and even in winter, the temperature rarely falls below freezing point.</p>',
+							image:'<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/0/05/Waterfall_on_Jeju_Island%2C_Korea.jpg">',
+							lat:'33.366667',
+							lng:'126.533333',
+							},
+							{
+							name:'<h2>Komodo Island</h2>',
+							description:'<p>Komodo is one of the 17,508 islands that compose the Republic of Indonesia. The island is particularly notable as the habitat of the Komodo dragon, the largest lizard on Earth, which is named for the island. Komodo Island has a surface area of 390 square kilometres and a human population of over two thousand. The people of the island are descendants of former convicts who were exiled to the island and who have mixed with Bugis from Sulawesi. The people are primarily adherents of Islam but there are also Christian and Hindu congregations. Komodo is part of the Lesser Sunda chain of islands and forms part of the Komodo National Park. In addition, the island is a popular destination for diving. Administratively, it is part of the East Nusa Tenggara province.</p>',
+							image:'<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/e/e3/Komodo_Island_north_aerial.jpg">',
+							lat:'-8.55',
+							lng:'119.45',
+							},
+							{
+							name:'<h2>Puerto Princesa Underground River</h2>',
+							description:'<p>The park has a limestone karst mountain landscape. St. Pauls Underground River Cave is more than 24 km (15 mi) long and contains an 8.2 km (5.1 mi) long underground section of Cabayugan River. The river winds through the cave before flowing directly into the South China Sea and is navigable by boat up to 4 km (2.5 mi) in from the sea. The cave includes major formations of stalactites and stalagmites, and several large chambers, including the 360-meter-long Italian\'s Chamber with approximate 2.5 million square meters volume. It is one of the largest cave rooms in the world.[2] The lower portion of the river up to 6 km from the sea, is subject to tidal influences. Until the 2007 discovery of an underground river in Mexico\'s Yucatán Peninsula,[3] the Puerto Princesa Subterranean River was reputed to be the world\'s longest underground river.</p>',
+							image:'<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/0/0b/Caves_entranceexit.jpg">',
+							lat:'10.166667',
+							lng:'118.916667',
+							},
+							{
+							name:'<h2>Table Mountain</h2>',
+							description:'<p>Table Mountain (Afrikaans: Tafelberg) is a flat-topped mountain forming a prominent landmark overlooking the city of Cape Town in South Africa, and is featured in the Flag of Cape Town and other local government insignia.[2] It is a significant tourist attraction, with many visitors using the cableway or hiking to the top. The mountain forms part of the Table Mountain National Park. The view from the top of Table Mountain has been described as one of the most epic views in Africa.[3]</p>',
+							image:'<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/d/dc/Table_Mountain_DanieVDM.jpg">',
+							lat:'33.957314',
+							lng:'18.403108',
+							},
+									{
+							name:'<h2>Hạ Long Bay</h2>',
+							description:'<p>Hạ Long Bay (Vietnamese: Vịnh Hạ Long, About this sound listen, literally: "descending dragon bay") is a UNESCO World Heritage Site, and a popular travel destination, in Quảng Ninh Province, Vietnam. Administratively, the bay belongs to Hạ Long City, Cẩm Phả town, and part of Vân Đồn District. The bay features thousands of limestone karsts and isles in various sizes and shapes. Hạ Long Bay is a center of a larger zone which includes Bái Tử Long bay to the northeast, and Cát Bà islands to the southwest. These larger zones share similar geological, geographical, geomorphological, climate, and cultural characters.</p>',
+							image:'<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/c/ce/Ha_Long_Bay_on_a_sunny_day.jpg">',
+							lat:'20.9',
+							lng:'107.2',
+							},
+										{
+							name:'<h2>Amazon rainforest</h2>',
+							description:'<p>The Amazon rainforest (Portuguese: Floresta Amazônica or Amazônia; Spanish: Selva Amazónica, Amazonía or usually Amazonia; French: Forêt amazonienne; Dutch: Amazoneregenwoud), also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf forest that covers most of the Amazon Basin of South America. This basin encompasses 7,000,000 square kilometres (2,700,000 sq mi), of which 5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest. This region includes territory belonging to nine nations. The majority of the forest is contained within Brazil, with 60% of the rainforest, followed by Peru with 13%, Colombia with 10%, and with minor amounts in Venezuela, Ecuador, Bolivia, Guyana, Suriname and French Guiana. States or departments in four nations contain "Amazonas" in their names. The Amazon represents over half of the planet\'s remaining rainforests, and comprises the largest and most biodiverse tract of tropical rainforest in the world, with an estimated 390 billion individual trees divided into 16,000 species.[1]</p>',
+							image:'<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/4/4b/Amazon_Manaus_forest.jpg">',
+							lat:'-3.16',
+							lng:'-60.03',
+							}
+					];
+				
+					wonders.forEach(function(wonder) {
+						var latlng = new google.maps.LatLng(wonder.lat,wonder.lng);
+						var marker = new google.maps.Marker({
+							position: latlng,
+							map: map,
+						});
+						var infowindow = new google.maps.InfoWindow({
+							content: wonder.name + wonder.image + wonder.description
+					
+						});
+						google.maps.event.addListener(marker, 'click', function() {
+							infowindow.open(map, marker);
+							map.setCenter(marker.position);
+							map.setZoom(2);
+				
+						});
+					});
+				});
+		</script>
+		<style type="text/css">
+		p{		text-align:center;
+		color:#6495ed;
+		font-family:"arial";
+		}
+			
+		
+
+		h1
+		{
+		text-align:center;
+		color:#6495ed;
+		font-family:"arial";
+	
+		}
+
+
+     	html { height: 100% }
+      	body { height: 100%; margin: 20; padding: 0 }
+     	#map { height: 75% }
+		</style>
+	</head>
+<body>
+<h1>New 7 Wonders of Nature</h1>
+<p>New 7 Wonders of Nature (2007-11), a contemporary effort to create a list of seven natural wonders chosen through a global poll, was organized by the same group as the New 7 Wonders of the World campaign.</p>
+<div id="map"></div>
+</body>
+</html>
