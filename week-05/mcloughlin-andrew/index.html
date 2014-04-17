@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>week 5</title>
+
+<style>
+	html {height:100%;}
+	body {height:100%;}
+	#map {height:100%;}
+	
+#next{
+	background-color:#000;
+	padding:10px;
+	width:auto;
+	z-index:900;
+	position:absolute;
+	color:#FFF;
+	cursor:pointer;
+	margin-left:50%;
+	margin-top:1%;
+	}
+	#GOT img{
+	background-color:#000;
+	padding:10px;
+	width:auto;
+	z-index:900;
+	position:absolute;
+	color:#FFF;
+	cursor:pointer;
+	bottom:0;
+	left:0;
+	}		
+</style>
+
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+
+<script type="application/javascript">
+	
+	$(document).ready(function() {
+       	var latlng = new google.maps.LatLng('', '');
+		var mapOptions = {
+		center: latlng,
+		zoom: 3,
+		};
+		
+		
+		
+		var map = new google.maps.Map($('#map')[0], mapOptions);
+		
+		
+		var wonders = [{
+			name: '<h2>House Stark</h2>',
+			description:'<p>House Stark was one of the Great Houses of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is by far one of the oldest lines of Westerosi nobility, claiming a line of descent stretching back over eight thousand years. The head of the house is the Lord of Winterfell. Before the Targaryen conquest, the leaders of House Stark ruled over the region as the Kings in the North.</p>',
+			image: '<img height="100" src="http://img2.wikia.nocookie.net/__cb20140402121259/gameofthrones/images/thumb/7/72/House-Stark-heraldry.jpg/250px-House-Stark-heraldry.jpg">',
+			lat: '52.355518',
+			lng: '-1.174320',
+			icon: 'http://img2.wikia.nocookie.net/__cb20140402121259/gameofthrones/images/thumb/7/72/House-Stark-heraldry.jpg/40px-House-Stark-heraldry.jpg'
+			},
+				{
+				name: '<h2>House Targaryen</h2>',
+				description: '<p>Once a noble family of the vast Valyrian Freehold, an empire spanning most of the eastern continent, the Targaryens were given control of the island of Dragonstone in the Narrow Sea some centuries ago. After the obliteration of Valyria in the Doom, the Targaryens launched a devastating invasion of Westeros using three dragons to spearhead their attack. In a short period of time, six of the seven formerly independent kingdoms had surrendered to the Targaryen leader, King Aegon I, unifying the continent under his rule. The last hold-out, Dorne, joined the kingdom through a political and marriage alliance some two centuries later.</p>',
+				image: '<img height="100" src="http://img1.wikia.nocookie.net/__cb20140402135352/gameofthrones/images/thumb/1/16/House-Targaryen-heraldry.jpg/250px-House-Targaryen-heraldry.jpg">',
+				lat: '36.4355951',
+				lng: '28.2231159',
+				icon: 'http://www.fastdecals.com/shop/images/thumbnails/10/40/40/targaryensigils01_misc.jpg'
+			},
+			{
+				name: '<h2>House Lannister</h2>',
+				description: '<p>House Lannister of Casterly Rock is one of the Great Houses of Westeros, one of its richest and most powerful families and oldest dynasties. The major characters Jaime, Cersei, and Tyrion and the recurring characters Tywin, Kevan, and Lancel are members of the house. Tywin is the head of House Lannister and Lord of Casterly Rock.</p>',
+				image: '<img height="100" src="http://img1.wikia.nocookie.net/__cb20140402110342/gameofthrones/images/thumb/0/0b/House-Lannister-heraldry.jpg/250px-House-Lannister-heraldry.jpg">',
+				lat: '37.090240',
+				lng: '-95.712891',
+				icon: 'http://img1.wikia.nocookie.net/__cb20140402110342/gameofthrones/images/thumb/0/0b/House-Lannister-heraldry.jpg/40px-House-Lannister-heraldry.jpg'
+			}
+		];
+
+
+		var currentWonder = 0;
+		$('#next').click(function() {
+			google.maps.event.trigger(wonders[currentWonder].marker, 'click');
+			currentWonder++;
+			if (currentWonder >= wonders.length) currentWonder = 0;
+		});
+
+			
+			
+			
+			wonders.forEach(function(wonder){
+				var latlng = new google.maps.LatLng(wonder.lat,wonder.lng);
+				var marker = new google.maps.Marker({
+					position: latlng,
+					map: map,
+					icon: wonder.icon
+					});
+				var infowindow = new google.maps.InfoWindow({
+				 	content: wonder.name + wonder.image + wonder.description
+					});	
+				//infowindow.open(map,marker);
+				google.maps.event.addListener(marker, 'click', function(){
+					infowindow.open(map, marker);
+					map.setCenter(marker.position);
+					map.setZoom(12);
+				});			
+				wonder.marker = marker;
+			});
+			
+			
+
+
+
+
+			
+	  });	
+				
+				
+				
+  
+	
+</script>
+
+</head>
+
+<body>
+<div id="GOT"><img src="https://pbs.twimg.com/profile_images/378800000170189157/8353bd8739bcacf63b204fc09bc94861.png" /></div>
+<div id="next">Show next house</div>
+<div id="map"></div>
+
+testy
+
+
+</body>
+</html>
