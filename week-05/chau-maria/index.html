@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+		<title>Maria Chau's Adventure BucketList</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script type="text/javascript">
+			$(document).ready(function (){
+				var latlng = new google.maps.LatLng('35.1697515', '33.4366038');
+				var mapOptions = {
+					center: latlng,
+					zoom: 2
+				};
+				var map = new google.maps.Map($('#map')[0], mapOptions);
+				console.log('testing');
+				var wonders = [
+					{
+						name: '<h2>Mt. Nimbus</h2>',
+						description: '<p>On this 2.5km-long via ferrata, guests traverse sharp ridges, cross a suspension bridge of dizzying heights and scramble over the final summit. </p>',
+						image: '<img height="200" src="http://ichef.bbci.co.uk/wwtravel/portrait/0_488/images/live/p0/1b/88/p01b88js.jpg">',
+						lat: '49.7580469',
+						lng: '-122.6713888',
+					},
+					{
+						name: '<h2>Mt. Everest</h2>',
+						description: '<p> Mount Everest (also known in Nepal as Sagarmatha and in Tibet as Chomolungma) is the Earth\'s highest mountain.</p>',
+						image: '<img height="200" src="http://upload.wikimedia.org/wikipedia/commons/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg">',
+						lat: '27.9845294',
+						lng: '86.9226694',
+					},
+					{
+						name: '<h2>EdgeWalk, CN Tower</h2>',
+						description: '<p>It is the world’s highest full circle hands-free walk on a 5 ft (1.5 m) wide ledge encircling the top of the Tower’s main pod, 356m/1168ft (116 storeys) above the ground.</p>',
+						image: '<img height="200" src="http://css1.www.cntower.ca/site_Files/Content/IMG/EdgeWalk-Lakeside-Small.jpg">',
+						lat: '43.642566',
+						lng: '-79.387057',
+					},
+					{
+						name: '<h2>The Great Wall of China</h2>',
+						description: '<p>The Great Wall of China is a series of fortifications made of stone, brick, tamped earth, wood, and other materials, generally built along an east-to-west line across the historical northern borders of China in part to protect the Chinese Empire or its prototypical states against intrusions by various nomadic groups or military incursions by various warlike peoples or forces.</p>',
+						image: '<img height="200" src="http://upload.wikimedia.org/wikipedia/commons/1/10/20090529_Great_Wall_8185.jpg">',
+						lat: '40.67693',
+						lng: '117.23193',
+					},
+					{
+						name: '<h2>The Serengeti</h2>',
+						description: '<p>The Serengeti hosts the largest terrestrial mammal migration in the world, which helps secure it as one of the Seven Natural Wonders of Africa, and one of the ten natural travel wonders of the world. The Serengeti is also renowned for its large lion population and is one of the best places to observe prides in their natural environment.</p>',
+						image: '<img height="200" src="http://www.heralddeparis.com/wp-content/uploads/2011/01/NortonSerengeti0251.jpg">',
+						lat: '-2.308806',
+						lng: '34.811153',
+					}
+				];
+				
+				wonders.forEach(function(wonder) {
+					var latlng = new google.maps.LatLng(wonder.lat, wonder.lng);
+					var marker = new google.maps.Marker({
+						position: latlng,
+						map: map,
+					});
+					var infowindow = new google.maps.InfoWindow({
+						content: wonder.name + wonder.image + wonder.description
+					});	
+				
+					google.maps.event.addListener(marker, 'click', function() {
+						infowindow.open(map, marker);
+						map.setCenter(marker.position);
+						map.setZoom(12);
+					
+					});	
+					});
+			});
+		</script>
+		<style type="text/css">
+			html { height: 100%; font-family: 'Muli'; color: #ff7f50}
+			body { height: 100%; margin: 30px; padding: 0; background: LightGrey; font-family: 'Muli' }
+			#map { height: 75%; width: auto; border: 2px solid black; color: black}
+			
+		</style>
+	</head>
+	<body>	
+		<h1>My Adventurous BucketList</h1>
+		<div id="map"></div>
+	</body>
+</html>

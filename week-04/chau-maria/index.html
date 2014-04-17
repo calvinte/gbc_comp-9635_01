@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+	<link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+		<title>Week 4 - Google Maps</title>
+		<style>
+			html, body, #map-canvas, #future-canvas {
+				height: 60%;
+				margin: 30px;
+				padding: 0;
+				width: auto%;
+				font-family: 'Muli';
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			
+	
+		</style>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+   		<script type="text/javascript" >
+   		navigator.geolocation.getCurrentPosition(function(position) {
+   			console.log(position);
+   				var myLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+   				var map = new google.maps.Map(document.getElementById('map-canvas'), {
+   				zoom: 2,
+   				center: myLatLng, 				
+   			});
+   			
+   			new google.maps.Marker({
+   				map: map,
+   				position: myLatLng,
+   			});
+   			
+   			// Ramon, Isabela
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(16.7915789,121.5215349),
+   			});
+   			
+   			// Macchu Picchu
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(-13.1546372,-72.5246573),
+   			});
+   			
+   			// London, England
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(51.5286416,-0.1015987),
+   			});
+   			
+   			// New York City
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(40.7056308,-73.9780035),
+   			});
+   			
+   			// San Francisco
+   			 new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(37.7577,-122.4376),
+   			});
+   		});
+   		
+		navigator.geolocation.getCurrentPosition(function(position) {
+   			console.log(position);
+   			var myLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+   			var map = new google.maps.Map(document.getElementById('future-canvas'), {
+   			zoom: 2,
+   			center: myLatLng,
+   				
+   			});
+   			
+   			// Mount Everest
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(27.9845294,86.9226694),
+   			});
+   			
+   			// Blue Lagoon Spa, Iceland
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(64.134471,-21.869557),
+   			});
+   			
+   			// Paris, France
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(48.8588589,2.3470599),
+   			});
+   			
+   		});
+   		</script>
+   		
+   	</head>
+
+	<body>
+	
+	<h1>Where I've been</h1>
+	
+	<div id="map-canvas"></div>
+	<ul>
+		<li>Ramon Isabela:  Where I was born.</li>
+		<li>London England:  Where I went to party just before I got married.</li>
+		<li>Macchu Picchu:  Where I spent my honeymoon.</li>
+		<li>New York City:  My getaway from Toronto life.</li>
+		<li>San Francisco:  Where I've been so many times, but never really explored.</li>	
+	</ul>
+	
+	<h1>My Travel Bucketlist</h1>
+	<div id="future-canvas"></div>
+	<ul>
+		<li>Mount Everest:  For adventure.</li>
+		<li>Blue Lagoon Spa, Iceland:  For relaxation.</li>
+		<li>Paris, France:  For romance.</li>
+	</ul>
+	
+	</body>	
+	
+</html>
