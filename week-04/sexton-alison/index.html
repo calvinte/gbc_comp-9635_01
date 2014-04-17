@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Week 4</title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript"></script>
+    <script>
+      navigator.geolocation.getCurrentPosition(function(position){
+          console.log(position);
+          var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          var map = new google.maps.Map(document.getElementById('map-canvas'), {
+              zoom: 4,
+              center: myLatLng,
+          });
+
+
+        var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+
+
+        new google.maps.Marker({
+            map: map,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png',
+            animation: google.maps.Animation.DROP,
+            position: myLatLng,
+        });
+       
+        new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(49.7017, -123.1588),
+        });
+
+        new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(33.921944, -86.307881),
+        });
+
+        new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(39.655556, -79.787778),
+        });
+
+        new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(43.129959, -79.059209),
+        });
+
+        new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: new google.maps.LatLng(45.232557, -81.476723),
+        });
+
+
+      });
+    </script>
+
+  </head>
+  <body>
+      <div id="map-canvas"></div>
+      <div class="interface-layer">
+          <h1>Climbing Destinations</h1>
+            <div id="destinations">
+              <div id="squam">
+                <p>Squamish, BC</p>
+              </div>
+            <div id="HP">
+                <p>Horse Pens 40, Alabama</p>
+            </div>
+            <div id="coopers-rock">
+                <p>Cooper's Rock, West Virginia</p>
+            </div>
+            <div id="halfway">
+                <p>Halfway Log Dump, Ontario</p>
+            </div>
+            <div id="niagara">
+                <p>Niagara Glen, Ontario</p>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

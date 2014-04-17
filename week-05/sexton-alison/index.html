@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Week 5 Google Maps</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script>
+			$(document).ready(function(){
+				var latlng = new google.maps.LatLng('43.7182713', '-79.3777061');
+				var mapOptions = {
+					center: latlng,
+					zoom: 4
+				};
+				var map = new google.maps.Map($('#map')[0], mapOptions);
+				console.log('testing');
+				var wonders = [
+					{
+						name: '<h2>Squamish, BC</h2>',
+						icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: "<p>Squamish is recognized as one of the world’s top rock climbing destinations. This is largely due to the deliciously sticky granite that is found all over town. Most famous of course is the Stawamus Chief, the second largest granite monolith in the world with enough routes to keep anyone busy for years.</p>",
+						image: '<img height="100" src="http://www.matthewbuckle.net/climb/beta/images/SQ09_chief_estuary.jpg">',
+						lat: '49.7017', 
+						lng: '-123.1588',
+					},
+
+					{
+						name: '<h2>Horse Pens 40, AL</h2>',
+						icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Horse Pens 40 is a privately owned outdoor nature park located in St. Clair County near Steele, Alabama. The park is situated atop Alabama\'s third-highest mountain, Chandler Mountain, in the foothills of The Appalachian Mountains. The park is known among the rock climbing community as a premier bouldering site in the American Southeast. </p>',
+						image: '<img height="100" src="http://1.bp.blogspot.com/_e2C1pw3FX0A/TUZ_ieSLc1I/AAAAAAAABT8/EufpzHd5dQg/s1600/Ben+on+Millipede.jpg">',
+						lat: '33.921944',
+						lng: '-86.307881',
+					},
+
+					{
+						name: '<h2>Coopers Rock, WV</h2>',
+						icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Coopers Rock may be the best place in the Eastern United States to try rock climbing for the first time or to learn the fundamental skills that will prepare you to climb on your own. It’s also an excellent place to focus on more advanced skills. Easy access, high quality rock, routes of varying difficulty and style, an abundance of natural anchors and spectacular scenery all contribute to the experience!</p>',
+						image: '<img height="100" src="http://pix.mdmpix.com/680/2010/2010-07-02_062/Coopers-Rock-Overlook-WV.jpg">',
+						lat: '39.655556',
+						lng: '-79.787778',
+					},
+
+					{
+						name: '<h2>Niagara Glen, ON</h2>',
+						icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Niagara Glen is the largest developed bouldering area in Southern Ontario. While it\'s just a few miles from the touristy chaos that is Niagara Falls, it\'s a world apart. Hundreds of boulders lie clustered between the cliff and river in a serene setting. With over seven hundred established problems, ranging from easy to V ridiculously hard, the Glen will have you coming back again and again.</p>',
+						image: '<img height="100" src="http://farm4.static.flickr.com/3083/2872426005_776174d29f.jpg">',
+						lat: '43.129959',
+						lng: '-79.059209',
+					},
+
+					{
+						name: '<h2>Halfway log Dump, ON</h2>',
+						icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>The shoreline boulders at Halfway Log Dump are the designated bouldering area in Bruce Peninsula National Park. Located on the scenic Georgian Bay shoreline, this is a unique bouldering experience in a beautiful and remote setting!</p>',
+						image: '<img height="100" src="http://www.urbanbeta.ca/wp-content/uploads/2013/08/LogDumpView.jpg">',
+						lat: '45.232557',
+						lng: '-81.476723',
+					},
+
+					{
+						name: '<h2>Joe Rockhead\'s Indoor Climbing, ON</h2>',
+						icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Joe Rockhead\'s, established in 1990, was Canada\'s first indoor rock climbing gym, and recently celebrated 20 years at its current Liberty Village location. Born out of the owners\' personal desire for a place to climb in the winter, Joe Rockhead\'s has helped to establish the urban climbing community and advance the sport of rock climbing. </p>',
+						image: '<img height="100" src="http://gripped.com/wp-content/uploads/2014/01/tour1.jpeg">',
+						lat: '43.6363319',
+						lng: '-79.4234314',
+					},
+
+					{
+						name: '<h2>Climber\'s Rock, ON</h2>',
+						icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Climber\'s Rock is one of the largest indoor climbing facilities in Canada. Founded in 2008, our walls were designed and built using the lastest technology in the industry and have been enjoyed by thousands of people every month since our doors have opened.</p>',
+						image: '<img height="100" src="http://evolvingmovement.files.wordpress.com/2012/01/dsc_0090.jpg">',
+						lat: '43.382033',
+						lng: '-79.762995',
+					},
+
+					{
+						name: '<h2>Boulderz Climbing Centre, ON</h2>',
+						icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Boulderz Climbing Centre is one of a kind in Canada. Our gym was designed and built in collaboration with Vertical Solutions. We sport a variety of subtle angle changes, and our texture and finish are un-beatable by any standard. </p>',
+						image: '<img height="100" src="http://2.bp.blogspot.com/_egRmCwI_qtc/TSIQgbEUm_I/AAAAAAAAAX0/HDGBMgFe7Ys/s1600/boulderz%2Bpanorama_body.jpg">',
+						lat: '43.666523',
+						lng: '-79.44971',
+					},
+
+					{
+						name: '<h2>True North, ON</h2>',
+						icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>True North Climbing is a large, clean and modern indoor climbing facility that offers a wide range of services for anyone from the beginner to the hard-core climbing addict.</p>',
+						image: '<img height="100" src="http://ilovetoronto.com/images/2013/06/True-North-features-the-Giant-Stalactite.JPG">',
+						lat: '43.745273',
+						lng: '-79.474614',
+					},
+
+					{
+						name: '<h2>Guelph Grotto, ON</h2>',
+						icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Over 19 years ago the Guelph Grotto was formed and built by a group of dedicated individuals whose passion was to see a climbing gym in Guelph. Dave Perozzo, then only 26, spear headed the visionary gym, hoping that the facility would provide the perfect place for him and friends to find a work out that was both stimulating and engaging and provide the ultimate training for tackling the real challenges of outdoor rock faces and ice covered mountains. </p>',
+						image: '<img height="100" src="http://s3-media3.ak.yelpcdn.com/bphoto/XrHQ2lhEFcxaw9f4vmuA4g/l.jpg">',
+						lat: '43.551853',
+						lng: '-80.22396',
+					},
+
+					{
+						name: '<h2>Allez Up, QC</h2>',
+						icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>Allez Up is a gathering spot for those who are passionate about rock climbing. Our clientele and our staff have and always will be representative of a motivated climbing community seeking to exceed their personal goals. Our route setters continuously offer challenging routes for climbers of all levels, each one more interesting than the last.  You will find that each hold is carefully selected, that the movements are creatively set and that we offer a variety of styles so that you can expand your repertoire of skills.</p>',
+						image: '<img height="100" src="http://www.v2com.biz/data/post/1117-01/template_vignette.jpg?39558">',
+						lat: '45.486924',
+						lng: '-73.561086',
+					},
+
+					{
+						name: '<h2>Grand River Rocks, ON</h2>',
+						icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+						animation: google.maps.Animation.DROP,
+						description: '<p>We are the premier indoor climbing gym in Kitchener-Waterloo. We offer over 100 climbs of various difficulty from beginner to seasoned climbers. Yoga classes, climbing camps, leading climbing, bouldering, and exercise equipment are all available.</p>',
+						image: '<img height="100" src="http://grandriverrocks.com/wp-content/uploads/2014/03/gym-overview-800x327.jpg">',
+						lat: '43.44152',
+						lng: '-80.475053',
+					},
+
+				];
+
+				wonders.forEach(function(wonder){
+					var latlng = new google.maps.LatLng(wonder.lat, wonder.lng);
+					var marker = new google.maps.Marker({
+						position: latlng,
+						map: map,
+						icon: wonder.icon,
+						animation: wonder.animation,
+					});
+
+					var infowindow = new google.maps.InfoWindow({
+						content: wonder.name + wonder.image + wonder.description
+					});
+					
+					google.maps.event.addListener(marker, 'click', function() {
+						map.setCenter(marker.position);
+						map.setZoom(10);
+						infowindow.open(map, marker);
+					});
+						
+					google.maps.event.addListener(infowindow, 'closeclick', function() {
+						map.setZoom(4);
+					});
+
+
+						});
+
+				});
+		</script>
+    <style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300);
+      html { height: 100%; }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map { height: 100%; z-index:1;}
+      h1 {
+		font-family: 'Roboto Slab', serif;
+		font-size: 40px;
+		position: absolute;
+		top: 0;
+		left:100px;
+		z-index: 2;
+	}
+    </style>
+	</head>
+	<body>
+		<h1>Climbing Destinations</h1>
+		<div id="map"></div>
+	</body>
+</html>
