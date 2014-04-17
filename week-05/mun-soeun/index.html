@@ -1,0 +1,139 @@
+<!doctype html>
+<html> 
+	<head> 
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Week 5 Class - Google Maps</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var latlng = new google.maps.LatLng('35.0000', '-40.0000');
+				var mapOptions = {
+					center: latlng,
+					zoom: 3
+				};
+				var map = new google.maps.Map($('#map')[0],mapOptions);
+				//console.log("testing");			
+				
+				var inventions = [{
+					name:'<h2>Motorized Aircraft</h2>',
+					description: '<p>December 17, 1903: First manually controlled, fixed wing, motorized aircraft takes place in Kitty Hawk, North Carolina by Orville and Wilbur Wright. First modern fixed wing aircraft.</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/86/First_flight2.jpg/220px-First_flight2.jpg">',
+					lat: '36.0256',
+					lng: '-75.6700',
+				},
+				{
+					name:'<h2>Tank</h2>',
+					description: '<p>1915: The tank was invented by Ernest Swinton,[160] although the British Royal Commission on Awards recognised a South Australian named Lance de Mole who had submitted a proposal to the British War Office, for a \'chain-rail vehicle which could be easily steered and carry heavy loads over rough ground and trenches\' complete with extensive drawings in 1912</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Swinton-holt-stockton-1918.jpg/220px-Swinton-holt-stockton-1918.jpg">',
+					lat: '51.7519',
+					lng: '-1.2578',
+				},
+				{
+					name:'<h2>Penicillin</h2>',
+					description: '<p>1928: Penicillin was first observed to exude antibiotic substances by Nobel laureate Alexander Fleming. Development of medicinal penicillin is attributed to a team of medics and scientists including Howard Walter Florey, Ernst Chain and Norman Heatley. </p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Sample_of_penicillin_mould_presented_by_Alexander_Fleming_to_Douglas_Macleod%2C_1935_%289672239344%29.jpg/220px-Sample_of_penicillin_mould_presented_by_Alexander_Fleming_to_Douglas_Macleod%2C_1935_%289672239344%29.jpg">',
+					lat: '51.5172',
+					lng: '-0.1731',
+				},
+				{
+					name:'<h2>Computer</h2>',
+					description: '<p> 1938: Z1 built by Konrad Zuse was the first freely programmable computer in the world.</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Zuse_Z1-2.jpg/220px-Zuse_Z1-2.jpg">',
+					lat: '52.4875',
+					lng: '13.3833',
+				},
+				{
+					name:'<h2> Transistor</h2>',
+					description: '<p> December 1947: The Transistor, used in almost all modern electronic products was invented in December 1947 by John Bardeen and Walter Brattain under the supervision of William Shockley. Subsequent transistors became steadily smaller, faster, more reliable, and cheaper to manufacture, leading to a revolution in computers, controls, and communication.</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Bardeen_Shockley_Brattain_1948.JPG/220px-Bardeen_Shockley_Brattain_1948.JPG">',
+					lat: '40.683404',
+					lng: '-74.400744',
+				},
+				{
+					name:'<h2>Nuclear Power</h2>',
+					description: '<p> December 20, 1951: First use of nuclear power to produce electricity for households in Arco, Idaho</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/First_four_nuclear_lit_bulbs.jpeg/220px-First_four_nuclear_lit_bulbs.jpeg">',
+					lat: '43.6347',
+					lng: '-113.3014',
+				},
+				{
+					name:'<h2>PC</h2>',
+					description: '<p>1957: The first PC used by one person and controlled by a keyboard, the IBM 610 was invented in 1957 by IBM.</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/20/IBM_Electronic_Data_Processing_Machine_-_GPN-2000-001881.jpg/250px-IBM_Electronic_Data_Processing_Machine_-_GPN-2000-001881.jpg">',
+					lat: '41.2102',
+					lng: '-73.803',
+				},
+				{
+					name:'<h2>Video Game Console</h2>',
+					description: '<p> 1972: The first video game console, used primarily for playing video games on a TV, is the Magnavox Odyssey.</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Magnavox-Odyssey-Console-Set.jpg/300px-Magnavox-Odyssey-Console-Set.jpg">',
+					lat: '38.3047',
+					lng: '-122.2989',
+				},
+				{
+					name:'<h2>Apple</h2>',
+					description: '<p> 1977: Apple II introduced by Steve Jobs and Steve Wozniak</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Apple_II_tranparent_800.png/300px-Apple_II_tranparent_800.png">',
+					lat: '37.3700',
+					lng: '-122.0400',
+				},
+				{
+					name:'<h2>WWW</h2>',
+					description: '<p> 1990: World Wide Web by a British national in Geneva, Switzerland: The World Wide Web was first proposed on March 1989 by English engineer and computer scientist Sir Tim Berners-Lee, now the Director of the World Wide Web Consortium.[166] The project was publicly introduced in December 1990.</p>',
+					image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/220px-First_Web_Server.jpg">',
+					lat: '46.2000',
+					lng: '6.1500',
+				},
+				];
+				
+				inventions.forEach(function(invention){
+					var latlng = new google.maps.LatLng(invention.lat, invention.lng);
+					var marker = new google.maps.Marker({
+						position: latlng,
+						map: map,
+					});
+				
+					var infowindow = new google.maps.InfoWindow({
+						content: invention.name + invention.image + invention.description,
+					});
+					google.maps.event.addListener(marker,'click', function(){
+						infowindow.open(map, marker);
+						map.setCenter(marker.position);
+						map.setZoom(12);
+						console.log(marker);
+					});
+				
+				});
+				
+			});
+			
+				
+		</script>
+		
+		<style type="text/css"> 
+			html, #map {
+			height:100%;
+			}
+			body {
+			height: 100%;
+			margin: 0;
+			padding:0;
+			}
+			h1 {
+			text-align: center;
+			color: #000066;
+			text-shadow: 2px 2px #3366FF;			
+			}
+		</style>
+	
+	</head>
+	
+	<body>
+		<h1> Great Inventions of 20th Century</h1>
+		<div id = "map"></div>
+	
+	
+	</body>
+
+</html>
