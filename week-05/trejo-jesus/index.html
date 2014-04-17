@@ -1,19 +1,193 @@
 <doctype html>
 <html>
 	<head>
-		<title>Week 2, Instagram!</title>
-		<script type="text/javascript" src=""></script>
-		<script type="text/javascript" src=""></script>
+		<title>Week 5 Google Maps</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
 		<script type="text/javascript">
+			$(document).ready(function(){
+			var latlng = new google.maps.LatLng('0', '0');
+			var mapOptions={
+				center:latlng,
+				zoom:3
+
+			};
+			var map = new google.maps.Map($('#map')[0],mapOptions);
+			console.log('testing');	
+			var wonders = [
+				{
+				name: '<h2>Merida</h2>',
+				description: '<p> Merida, officially known as Santiago de los Caballeros de Mrida, is the capital of the municipality of Libertador and the state of Merida, and is one of the principal cities of the Venezuelan Andes. It was founded in 1558 by Captain Juan Rodriguez Suarez, forming part of Nueva Granada, but later became part of the Captaincy General of Venezuela and played an active role in the War of Independence. The Merida cable car is the highest and largest cable car in the world</p>'
+				+
+					'<p>The capital city\'s population is 204,879 inhabitants and the metropolitan area, that includes the municipality of Libertador, reaches 345,489 people (Census 2001). The city accounts for 28% of the total population of Mérida State, which has more than 750,000 inhabitants (Census 2001). It is home to the University of Los Andes and the Archdiocese of Mérida. It also has the highest and longest cable car in the world. It is the largest student and tourist center of western Venezuela. The mass transit system (Trolebús Mérida) is available as a means of tourist transport.</p>'
+				+
+					'<p>This city sits on a tableland nestled in the valley of the Chama River, which runs from end to end. The town of Mérida is located at an altitude of 1,600 meters (5,249 ft). As background on the horizon rises the country\'s highest summit: the Pico Bolívar with an altitude of 4981 meters (16,338 ft).</p>',
+				image: '<img height="400" src="http://raredelights.com/wp-content/uploads/2013/12/M%C3%A9rida-Venezuela.jpg">',
+				lat: '8.6000',
+				lng: '-71.1500',
+
+				},
+				{
+				name: '<h2>Caracas</h2>',
+				description: '<p>Caracas (Spanish pronunciation: [kaˈɾakas]), officially Santiago de León de Caracas, is the capital and largest city of Venezuela. Caracas is located in the northern part of the country, following the contours of the narrow Caracas Valley on the Venezuelan coastal mountain range (Cordillera de la Costa). Terrain suitable for building lies between 760 and 910 m (2,490 and 2,990 ft) above sea level. The valley is close to the Caribbean Sea, separated from the coast by a steep 2,200 m (7,200 ft) high mountain range, Cerro El Ávila; to the south there are more hills and mountains.</p>'
+				+
+					'<p>The Metropolitan District of Caracas is made up of five municipalities: Libertador Municipality which is the only administrative division of the Venezuelan Capital District, and four other municipalities, which are within in Miranda State: Chacao, Baruta, Sucre, and El Hatillo. Libertador holds many of the government buildings and is the Capital District (Distrito Capital). The Distrito Capital had a population of 1,943,901 as of 2011,[1] while that of Metropolitan District of Caracas was estimated at 3,055,000 as of (2013).</p>',
+				image: '<img height="400" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Caracas_Montage.jpg/440px-Caracas_Montage.jpg">',
+				lat: '10.5000',
+				lng: '-66.9167',
+
+				},
+
+				{
+				name: '<h2>Tenerife</h2>',
+				description: '<p>Tenerife (/tɛnəˈriːf/; Spanish: [teneˈɾife]) is the largest and most populous island of the seven Canary Islands;[1] it is also the most populated island of Spain,[1] with a land area of 2,034.38 square kilometres (785 sq mi) and 898,680 inhabitants,[2] 43 percent of the total population of the Canary Islands.[1] Tenerife is also the largest and most populous island of Macaronesia.</p>'
+				+
+					'<p>About five million tourists visit Tenerife each year, the most of any Canary Islands.[3] Tenerife hosts one of the world\'s largest carnivals and the Carnival of Santa Cruz de Tenerife is attempting to become a World Heritage Site.[4] Tenerife is serviced by two airports, Tenerife North Airport and Tenerife South Airport, and is the tourism and economic centre of the archipelago.[5][6]</p>'
+					+
+					'<p>Santa Cruz de Tenerife is the capital of the island and the seat of the island council (cabildo insular). The city is capital of the autonomous community of Canary Islands (shared with Las Palmas), sharing governmental institutions such as Presidency and ministries. Between the 1833 territorial division of Spain and 1927 Santa Cruz de Tenerife was the sole capital of the Canary Islands, until a decree ordered that the capital of the Canary Islands be shared, as it remains at present.[7][8]</p>',
+				image: '<img height="400" src="http://upload.wikimedia.org/wikipedia/commons/3/37/Puzzle_Tenerife.jpg">',
+				lat: '28.2686',
+				lng: '-16.6056',
+
+
+				},
+
+				{
+				name: '<h2>Madrid</h2>',
+				description: '<p>Madrid (English /məˈdrɪd/, Spanish: [maˈðɾið]) is the capital of Spain and its largest city. The population of the city is roughly 3.3 million[4] and the entire population of the Madrid metropolitan area is calculated to be around 6.5 million. It is the third-largest city in the European Union, after London and Berlin, and its metropolitan area is the third-largest in the European Union after London and Paris.[5][6][7][8] The city spans a total of 604.3 km2 (233.3 sq mi).[9]</P>'
+				+
+					'<p>The city is located on the Manzanares River in the centre of both the country and the Community of Madrid (which comprises the city of Madrid, its conurbation and extended suburbs and villages); this community is bordered by the autonomous communities of Castile and León and Castile-La Mancha. As the capital city of Spain, seat of government, and residence of the Spanish monarch, Madrid is also the political, economic and cultural centre of Spain.[10] The current mayor is Ana Botella from the People\'s Party (PP).</p>'
+					+
+					'<p>The Madrid urban agglomeration has the third-largest GDP[11] in the European Union and its influences in politics, education, entertainment, environment, media, fashion, science, culture, and the arts all contribute to its status as one of the world\'s major global cities.[12][13] Due to its economic output, high standard of living, and market size, Madrid is considered the major financial centre of Southern Europe[14][15] and the Iberian Peninsula; it hosts the head offices of the vast majority of the major Spanish companies, such as Telefónica, Iberia or Repsol. Madrid is the 10th most livable city in the world according to Monocle magazine, in its 2010 index.[16][17]</p>',
+				image: '<img height="400" src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/CollageMadrid.jpg/311px-CollageMadrid.jpg">',
+				lat: '40.4000',
+				lng: '-3.6833',
+
+
+				},
+				
+				{
+				name: '<h2>Geneva</h2>',
+				description: '<p>Geneva (/dʒɨˈniːvə/; French: Genève, IPA: [ʒə.nɛv]; Arpitan: Genèva, IPA: [dzəˈnɛva] and German: Genf; IPA: [ɡɛnf][3]) is the second most populous city in Switzerland (after Zürich) and is the most populous city of Romandy, the French-speaking part of Switzerland. Situated where the Rhône exits Lake Geneva, it is the capital of the Republic and Canton of Geneva.</p>'
+				+
+					'<p>The municipality (ville de Genève) has a population (as of August 2013) of 194,458, and the canton (which is essentially the city and its inner-ring suburbs) has 474,169 residents.[1] In 2011, the compact agglomération franco-valdo-genevoise (Greater Geneva or Grand Genève) had 915,000 inhabitants in both – Switzerland and France (< 30mins distance). Within Swiss territory, the commuter area named "Métropole lémanique" contains a population of 1.25 million. This area is essentially spread east from Geneva towards the Riviera area (Vevey, Montreux) and north-east towards Yverdon-les-Bains, in the neighbouring canton of Vaud (< 60mins distance).</p>'
+					+
+					'<p>Geneva is a global city, a financial centre, and worldwide centre for diplomacy due to the presence of numerous international organizations, including the headquarters of many of the agencies of the United Nations[4] and the Red Cross.[5] Geneva is the city that hosts the highest number of international organisations in the world.[6] It is also the place where the Geneva Conventions were signed, which chiefly concern the treatment of wartime non-combatants and prisoners of war.</p>',
+				image: '<img height="400" src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Views_of_Geneva.jpg/480px-Views_of_Geneva.jpg">',
+				lat: '46.2000',
+				lng: '46.2000',
+
+
+				},
+				{
+				name: '<h2>Curacao</h2>',
+				description: '<p>Curaçao (/ˈkjʊərəsaʊ/ kewr-ə-sow; Dutch: Curaçao;[5][6] Papiamentu: Kòrsou) is an island in the southern Caribbean Sea, off the Venezuelan coast, that forms part of the Dutch Caribbean. The Country of Curaçao (Dutch: Land Curaçao;[7] Papiamento: Pais Kòrsou),[8] which includes the main island plus the small, uninhabited island of Klein Curaçao ("Little Curaçao"), is a constituent country of the Kingdom of the Netherlands. It has a population of over 150,000 on an area of 444 km2 (171 sq mi) and its capital is Willemstad.</p>'
+				+
+					'<p>Prior to 10 October 2010, when the Netherlands Antilles was dissolved, Curaçao was administered as the Island Territory of Curaçao[9] (Dutch: Eilandgebied Curaçao, Papiamentu: Teritorio Insular di Kòrsou), one of five island territories of the former Netherlands Antilles.</p>',
+				image: '<img height="400" src="http://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Willemstad_harbor.jpg/800px-Willemstad_harbor.jpg">',
+				lat: '12.1833',
+				lng: '-69.0000',
+
+
+				},
+				{
+				name: '<h2>Aruba</h2>',
+				description: '<p>Aruba (/əˈruːbə/ ə-roo-bə; Dutch pronunciation: [aˈruba]) is an island 33 kilometre long (20 mi) located about 1,600 kilometres (990 mi) west of the Lesser Antilles in the southern Caribbean Sea, located 27 kilometres (17 mi) north of the coast of Venezuela. Together with Bonaire and Curaçao, it forms a group referred to as the ABC islands. Collectively, Aruba and the other Dutch islands in the Caribbean are often called the Netherlands Antilles or the Dutch Caribbean.</p>'
+					+
+					'<p>Aruba is one of the four constituent countries that form the Kingdom of the Netherlands, along with the Netherlands, Curaçao and Sint Maarten. The citizens of these countries all share a single nationality: Dutch. Aruba has no administrative subdivisions, but, for census purposes, is divided into eight regions. Its capital is Oranjestad.</p>'
+					+
+					'<p>Unlike much of the Caribbean region, Aruba has a dry climate and an arid, cactus-strewn landscape. This climate has helped tourism as visitors to the island can reliably expect warm, sunny weather. It has a land area of 179 km2 (69.1 sq mi) and is densely populated, with a total of 102,484 inhabitants at the 2010 Census. It lies outside the hurricane belt.</p>',
+				image: '<img height="400" src="http://vasanticosmetics.com/beauty-blog/wp-content/uploads/2013/02/Aruba.jpg">',
+				lat: '12.5000',
+				lng: '-69.9667',
+
+
+				},
+
+
+
+			];
 			
+			wonders.forEach(function(wonder){
+
+				var latlng = new google.maps.LatLng(wonder.lat,wonder.lng);
+				var marker = new google.maps.Marker({
+					position: latlng,
+					map: map
+				});	
+
+				var infowindow = new google.maps.InfoWindow({
+
+					content: '<div class="wonder">' + wonder.name + wonder.image + wonder.description + '</div>'
+				});
+
+				google.maps.event.addListener(marker, 'click', function(){
+					infowindow.open(map,marker);
+					map.setCenter(marker.position);
+					map.setZoom(12);
+				});
+
+			});	
+			
+		});
 		</script>
 		
     <style type="text/css">
      
+
+ 		@import url(http://fonts.googleapis.com/css?family=Antic+Slab);
+	
+		html { height: 100% }
+        
+        body { 
+        	height: 100%; 
+        	margin: 0; 
+        	padding: 0 ;
+        	font-family: 'Antic Slab', serif;
+		 	font-size: 15px;
+		 	color: #000;
+		 }
+ 		
+ 		#map { height: 100% ;
+ 		margin: 0; 
+        	padding: 0 ;}
+
+		h2 {
+			
+			font-family: 'Antic Slab';
+			margin-top: 10px;
+			margin-left: 10px;
+			font-size: 2em; 
+		 	font-weight: bold;
+		 	margin-top: 10px;
+		 }
+		
+		
+		 img{ 		 	
+			margin-left: 10px;
+		 	border: 2px #000 solid;
+		 }
+
+		.wonder {
+		 	background: #F2F2FF;
+		 	border-radius: 5px;
+		 	
+
+		 }
+  		.wonder p{
+  			margin-left: 10px;
+  			margin-bottom: 10px;
+			font-family: 'Antic Slab';
+			font-size: 1.12em; 
+		}
+	
     </style>
+	
 	</head>
 	<body>
-    	<div id="map-canvas"></div>
+		
+    	<div id="map"></div>
 	</body>
 </html>
 
