@@ -9,7 +9,7 @@
 	var latlng = new google.maps.LatLng('35.1697515', '33.4366038');
 				var mapOptions = {
 					center: latlng,
-					zoom: 4
+					zoom: 3
 					};
 					var map = new google.maps.Map($('#map')[0], mapOptions);
 					
@@ -68,10 +68,25 @@
 				
 					wonders.forEach(function(wonder) {
 						var latlng = new google.maps.LatLng(wonder.lat,wonder.lng);
+						
+						
+						var image = new google.maps.MarkerImage("http://icons.iconarchive.com/icons/mysitemyway/clean-3d/256/glossy-3d-blue-plane-icon.png", null, null, null, new google.maps.Size(34, 34));
+						
+
 						var marker = new google.maps.Marker({
+						    draggable:true,
+  							animation: google.maps.Animation.DROP,
 							position: latlng,
 							map: map,
+							   icon: image,
+							 
+
+							   
 						});
+						//  google.maps.event.addListener(marker, 'click', toggleBounce);
+
+
+
 						var infowindow = new google.maps.InfoWindow({
 							content: wonder.name + wonder.image + wonder.description
 					
@@ -80,6 +95,12 @@
 							infowindow.open(map, marker);
 							map.setCenter(marker.position);
 							map.setZoom(2);
+							if (marker.getAnimation() != null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+
 				
 						});
 					});
