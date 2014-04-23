@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<title>5 Largest Counties in the World!!</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			var latlng = new google.maps.LatLng('35.1697515', '33.4366038');
+			var map = new google.maps.Map($('#map')[0], {
+				center: latlng,
+				zoom: 4
+			});	
+			var countires = [{ 
+				name: '<h2>Russia</h1>',
+				description: '<p>The beautiful country of Russia hails as the largest country in the world.!</p>',
+				image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/en/3/38/Collage_of_Moscow_2014.jpg">',
+				lat: '60.0000',
+				lng: '90.0000',
+			},{
+				name: '<h2>Canada</h1>',
+				description: '<p>The country that I call home, Canada! it is the third largest country in the world.</p>',
+				image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Canadian_parliament_MAM.JPG">',
+				lat: '62.2270',
+				lng: '-105.3809',
+			},{
+				name: '<h2>China</h1>',
+				description: '<p>China who the country with the largest population comes in at number three under the largest country category.</p>',
+				image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/3/3b/20090528_Beijing_Forbidden_City_7727.jpg">',
+				lat: '35.0000',
+				lng: '103.0000',
+			},{
+				name: '<h2>United States of America</h1>',
+				description: '<p>The great U.S. of A hails as the fourth largest country in the world!</p>',
+				image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/3/37/Liberty-statue-from-below.jpg">',
+				lat: '40.0000',
+				lng: '-100.0000',
+			},{
+				name: '<h2>Brazil</h1>',
+				description: '<p>The stunningly beautiful country of brazil with its amazing beaches and beautiful women hails as the fifth largest country in the world!</p>',
+				image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/6/62/Praia_de_Copacabana_-_Rio_de_Janeiro%2C_Brasil.jpg">',
+				lat: '-10.6500',
+				lng: '-52.9500',
+				
+					}];
+			countires.forEach(function(country) {
+				var latlng = new google.maps.LatLng(country.lat, country.lng);
+				var marker = new google.maps.Marker({
+					position: latlng,
+					map: map,
+				});
+				var infowindow = new google.maps.InfoWindow({
+					content: country.name + country.image + country.description
+				});
+	
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.open(map, marker);
+					map.setCenter(marker.position);
+					map.setZoom(12);
+				});
+			});
+		});
+		</script>
+		<style type="text/css">
+			html {height: 100%}
+			body {height: 100%; margin: 0; padding: 0 }
+			p	 {font-size: 25px; color: blue}
+			#map {height: 100%}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<p> The countries pointed out on the map detail the largest countries in the world by land mass. </p>
+	</body>
+</html>
