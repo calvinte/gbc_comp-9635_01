@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Week 5</title>	
+			<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+  			<script type="text/javascript">
+  				$(document).ready(function() {
+  					var latlng = new google.maps.LatLng('35.1697515','33.4366038');
+  					var mapOptions = {
+  						center:latlng,
+  						zoom:2
+  					};
+  				var map = new google.maps.Map($('#map')[0], mapOptions);
+  					//console.log('testing');
+  					var foods = [
+  					{
+  						name: '<h3>Ful Medames (Egypt)</h3>',
+  						description: '<p>Egyptian dish descriped as "The rich man\'s breakfast, shopkeeper\'s lunch, the poor man\'s supper", is rustic bean stew and Egypt\'s nationl dish</p>',
+  						image:'<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/5/5a/Ful.jpg">',
+  						lat: '26.8357675',
+  						lng: '30.7956597',
+  					}, //the \ allows the string to continue without breaking it up in the middle
+
+  					{
+  						name: '<h3>Bobotie (South Africa)</h3>',
+  						description: '<p>A custard-topped meat casserole that\'s considered south Africa\'s national dish, its cooked with aromatic spices and bits of almonds and dried fruit spiking the meat mixture. served with rice pilaf and tangy chutney, makes it a unique mix of European and Asian flavours.</p>',
+  						image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/3/3d/Bobotie-01.jpg">',
+  						lat: '-28.4792625',
+  						lng: '24.6727135',
+  					},
+
+  					{
+  						name: '<h3>Bulgogi (Korea)</h3>',
+  						description: '<p>Grilled marinated beef with various variations, it is traditionally marinated with sweet sauce. The beef is marinated with mixture of soy sauce, sugar, sesame oil, galic and pepper before cooking to make the flavour full.</p>',
+  						image: '<img height="100" src= "http://savorysweetlife.com/wp-content/uploads/2009/07/bulgogi1.jpg">',
+  						lat: '37.5651',
+  						lng: '126.98955',  						
+
+  					},
+
+  					{
+  						name: '<h3>Maple Sugar Pie (Canada)</h3>',
+  						description: '<p>French-Canadian classic, originated from Quebec, where 75% of world\'s mape sugar is made. It is ooey-gooey dessert, a slice of maple heaven.</p>',
+  						image: '<img height="100" src= "http://www.epicurious.com/images/recipesmenus/2009/2009_january/350958.jpg">',
+  						lat: '46.8580074',
+  						lng: '-71.3460728',  						
+
+  					},
+
+  					{
+  						name: '<h3>Chili Crab (Singapore)</h3>',
+  						description: '<p>Delightfully messy national dish of Singapore, this dish consists of solf-shell crabs stewed with flavorful mixture that features tomato sauce, chiles, chili sauce, garlic, and ginger. Popular street food as well, it is often served with bread to dip it in the grave like sauce.</p>',
+  						image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Chilli_crab-02.jpg/800px-Chilli_crab-02.jpg">',
+  						lat: '1.3185848',
+  						lng: '103.8455665',
+  					},
+
+  					{
+  						name: '<h3>Hákarl (Iceland)</h3>',
+  						description: '<p>Iceland national dish, Hákarl is consists of Greenland shark or sleeper shark which ahs been cured with a particular fermentation process and hung to dry for four to five months. Hákarl is an acquired taste, ebcause of it has a very particular ammonia-rich smell and fishy taste.</p>',
+  						image: '<img height="100" src="http://www.just-eat.co.uk/blog/wp-content/uploads/2012/06/hakarl.jpg">',
+  						lat: '64.9312102',
+  						lng: '-19.0211697',
+  					},
+
+  					{
+  						name: '<h3>Christmas Pudding (England)</h3>',
+  						description: '<p>Type of pudding traditionally served on Christmas Day as part of Christmas dinner, it is composed of many dried fruits held together by egg and suet, sometimes moistened by treacle or molasses and flavoured with cinnamon, nutmeg, cloves, ginger and other spices. Before being consumed, it is aged for a month or even a year (high alcohol content prevents it from spoiling).</p>',
+  						image: '<img height="100" src="http://upload.wikimedia.org/wikipedia/commons/6/62/Christmas_pudding.JPG">',
+  						lat: '52.8849565',
+  						lng: '-1.9770329',
+  					},
+
+
+
+
+  					];
+  					foods.forEach(function(food){
+						var latlng = new google.maps.LatLng(food.lat,food.lng);
+  						var marker = new google.maps.Marker({
+  						position: latlng,
+  						draggable: true,
+  						animation:google.maps.Animation.DROP,
+  						map: map,
+  						});
+  					
+  					var infowindow = new google.maps.InfoWindow({
+  						content: food.name + food.image + food.description 
+  					});
+  					//infowindow.open(map,marker);
+  					google.maps.event.addListener(marker, 'click', function() {
+  						infowindow.open(map,marker);
+  						map.setCenter(marker.position);
+  						map.setZoom(8);
+
+  						
+  					});
+
+  					/*function toggleBounce() {
+
+  					if (marker.getAnimation() != null) {
+    					marker.setAnimation(null);
+  					} else {
+    					marker.setAnimation(google.maps.Animation.BOUNCE);
+  					}
+						}*/
+
+
+  						});
+
+  				});
+
+
+  			</script>
+
+		<style type="text/css">
+			html {height: 100%}
+			body {height: 100%; margin:0; padding:0}
+			#map {height: 100%}
+			h3 {font: #8284d9}
+	</style>
+
+
+
+	</head>
+
+		<body>
+			
+		<div id="map"></div>
+
+			
+		</body>
+</html>
