@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+	<head>
+		<title>My favourite places</title>
+		<style>
+			html, body, #map-canvas, #future-canvas {
+				height: 60%;
+				margin: 30px;
+				padding: 0;
+				
+				background: light blue;
+				width: auto%;
+			}
+			
+						h1{
+				font-family:"Times New Roman", Cursive;
+				font-size: 2.5em;
+				color: #000;
+				margin: 30px;
+				text-align: center;
+				text-shadow:0px 0px 2px #FFFFFF, 2px 2px 2px #333333;
+
+			}
+			
+			h2{
+				color: #000;
+				font-size: 1.5em;
+				text-decoration: underline;
+				margin: 30px;
+				text-shadow:0px 0px 2px #FFFFFF, 2px 2px 2px #333333;
+			}
+			
+			h3{
+				font-family:"Times New Roman", Cursive;
+				font-size: 1.2em;
+				text-align: center;
+				color: #000088;
+				margin: 30px;
+			
+			}
+
+			
+			h4{
+				font-family:"Times New Roman", Cursive;
+				font-size: 18px;
+				font-weight: bold;
+				color: #000;
+				margin: 30px;
+
+	
+		</style>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+   		<script type="text/javascript" >
+   		navigator.geolocation.getCurrentPosition(function(position) {
+   			console.log(position);
+   				var myLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+   				var map = new google.maps.Map(document.getElementById('map-canvas'), {
+   				zoom: 2,
+   				center: myLatLng,
+   				
+   			});
+   			
+   			new google.maps.Marker({
+   				map: map,
+   				position: myLatLng,
+   			});
+   		
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(18.734543,-68.46609),
+   			});
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(36.102372,-115.174556),
+   			});
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(11.9692999,121.9272753),
+   			});
+   			
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(20.551209,-86.925944),
+   			});
+   			 new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(14.5980716,120.9797033),
+   			});
+   		});
+   		
+	navigator.geolocation.getCurrentPosition(function(position) {
+   			console.log(position);
+   				var myLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+   				var map = new google.maps.Map(document.getElementById('future-canvas'), {
+   				zoom: 2,
+   				center: myLatLng,
+   				
+   			});
+   			
+   			//Rome, Italy
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(41.9100711,12.5359979),
+   			});
+   			//London Bridge, London, United Kingdom
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(51.507929,-0.087709),
+   			});
+   			//San Francisco, California, USA
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(37.7577,-122.4376),
+   			});
+   			// Seattle, Washington, USA
+   			new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(47.614848,-122.3358423),
+   			});
+   			// Paris, France
+   			 new google.maps.Marker({
+   				map: map,
+   				position: new google.maps.LatLng(48.8588589,2.3470599),
+   			});
+   		});
+   			  		
+   		
+   			  		
+   		</script>
+   		
+   	</head>
+
+	<body>
+	<div class="header">
+		<h1>MY FONDEST MEMORIES</h1>
+	</div>
+	<div id="map-canvas"></div>
+	
+	<p>I have been to many places, but my fondest memories are in the following:</p>
+	<div>
+	<h2>Toronto, Ontario</h2>
+	<p>I flew more than 30000 miles just to live and work here in Toronto. It is cold bu I am loving it.</p>
+	
+	<h2>Las Vegas, Nevada</h2>
+	<p>My husband and I went to Las Vegas for a week. It was fun - good place, great food and good bargains. But I lost in the slot machines!</p>
+
+	<h2>Punta Cana, Dominican Republic</h2>
+	<p>A week of Honeymoon in 2010. Pure luxury! I cannot forget the fresh lobster and the hot tub in the room!</p>
+
+	
+	<h2>Cozumel, Mexico</h2>
+	<p>Last Christmas holiday, we flew to Cozumel. Beautiful island and awesome water. Great food and friendly people. I love the place!</p>
+
+
+	<h2>Boracay, Philippines</h2>
+	<p>This is a paradise in my homeland. My husband spent two weeks mingling with my people. Lovely place and wonderful company.</p>
+		
+	</div>
+	
+	<div id="future-canvas">My Dream Trips</div>
+	<p>I would like to make the following trips in the near future:</p>
+	<div>
+	<h2>Rome, Italy</h2>
+	<p class="flist">Foremost, I would like to see the Vatican and maybe meet the Pope in person. 
+			And then, we can take this incredible Rome day trip to the Amalfi Coast, and discover the dreamy coastal scenery of southern Italy.</p>
+	
+	<h2>London Bridge, London, United Kingdom</h2>
+	<p class="flist">A trip to London will be very exciting. I would like to see the London Bridge and the Royal London. 
+			If there is an opportunity, I would like to live like a princess! Maybe pretend...</p>
+
+	<h2>San Francisco, California, USA</h2>
+	<p class="flist">I always dream to see the Golden Gate and the Aquarium of the Bay.  
+			My friend also mentioned Fisherman's wharf, wax museum, Ripley's Believe it or not.
+			And then, go shopping at the Union Square and take a walk at the North Beach and Chinatown!
+			</p>
+
+	
+	<h2>Seattle, Washington, USA</h2>
+	<p class="flist">It will be interesting to see the Pike Market Place where vendors gleefully toss salmon to each other and crack jokes. 
+			And then visit the Seattle Center, a cultural complex where you could easily spend hours at the Pacific Science Center, 
+			Chihuly glass display, food court, theatres or simply watching kids frolic in a giant outdoor fountain. We would probably try
+			 riding the Washington State Ferry and the Space Needle! Or take a stroll in the Olympic Sculpture Park.
+			</p>
+
+
+	<h2>Paris, France</h2>
+	<p class="flist">I would like to see the Eiffel Tower and enjoy dinner at the Eiffel Tower's 58 Tour Eiffel restaurant. 
+			Then see the Louvre Museum and the Notre Dame Cathedral. A visit to the home of the Cancan, the famous Moulin 
+			Rouge in bohemian Montmartre will also be great. Or, even just taking a stroll, sipping coffee and go shopping!
+			</p>
+	</br>
+	</br>
+	</br>				
+	
+	</body>	
+	
+</html>
