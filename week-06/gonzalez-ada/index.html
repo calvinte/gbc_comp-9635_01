@@ -61,10 +61,10 @@
 								});
 								var infowindow = new google.maps.InfoWindow({
 									content: 
-										  '<a target="_blank" href=" '+ media.link +' ">'
-										+ '<img src=" '+ media.images.standard_resolution.url +' ">'
+										  '<a target="_blank" href="'+ media.link +'">'
+										+ '<img src="'+ media.images.standard_resolution.url +'">'
 										+ '</a>'
-										,
+										+ '<br>' + media.user.full_name,
 								});
 								google.maps.event.addListener(marker, 'click', function() {
 									if (openInfoWindow) openInfoWindow.close();
