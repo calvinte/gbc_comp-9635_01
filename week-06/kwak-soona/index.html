@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Week 6</title>
+			<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script>
+			//console.log($,google);
+			$(document).ready(function() {
+				var openInfowindow;
+				var map=new google.maps.Map($('#map-canvas')[0], {
+					zoom: 16,
+
+				});
+
+				google.maps.event.addListener(map,'click',function(event) {
+					//console.log(event);
+					searchPhotos(event.latLng);
+
+				});
+
+				navigator.geolocation.getCurrentPosition(function(position){
+					console.log(position);
+					var latlng=new google.maps.LatLng(
+						position.coords.latitude,
+						position.coords.longitude);
+						map.setCenter(latlng);
+
+					searchPhotos(latlng);
+				});
+
+				function searchPhotos(latlng) {
+					map.setCenter(latlng);
+					new google.maps.Marker ({
+						position:latlng,
+						map:map,
+						animation:google.maps.Animation.BOUNCE
+					});
+					
+					$.ajax({
+
+						type:'GET',
+						dataType:'jsonp',
+						url:'https://api.instagram.com/v1/media/search'
+						+'?distance=100'
+						+'&lat='+latlng.lat()
+						+'&lng='+latlng.lng()
+						+'&client_id=585d00be2af34a26b0e1caa6995cf19f',
+						success:function(response) {
+							console.log(response);
+							response.data.forEach(function(media) {
+								
+								var latlng=new google.maps.LatLng(
+									media.location.latitude,
+									media.location.longitude
+									);
+								
+								var marker=new google.maps.Marker ({
+									position:latlng,
+									map:map,
+								});
+
+								var contentInfo = ({ 
+									link: '<a target="_blank" href="' + media.link + '"><img src="'+media.images.low_resolution.url+'"></a>',
+									author: '<p>Author:</br>' + media.user.full_name +'</p>',
+									caption: '',
+
+								});
+								if (media.caption) contentInfo.caption ='<p>' +media.caption.text +'</p>';
+
+								var infowindow=new google.maps.InfoWindow({
+									content: contentInfo.link+contentInfo.author+contentInfo.caption,
+
+									//'<img src="'+media.images.low_resolution.url+'">',
+									//link:'<a herf="' + media.link +'"></a>',
+								});
+
+							google.maps.event.addListener(marker,'click',function(){
+								if (openInfowindow)openInfowindow.close();
+								openInfowindow=infowindow;
+								infowindow.open(map,marker);
+
+							});
+
+							});
+						},
+
+
+
+						});
+					
+				}
+			});
+;
+		</script>
+
+		<style type="text/css">
+		html,body,#map-canvas {
+			height:100%;
+			margin:0;
+			padding:0;
+			width:100%;
+		}
+		h1{
+			text-align: center;
+			color: #f5f5d5;
+			background: #9eba62;
+			padding-top: 5px;
+			padding-bottom: 10px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		p {
+			text-align: center;
+			color: #f5f5d5;
+			font-size: 12px;
+			font-family: sans-serif;
+			background: #9eba62;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-bottom: 5px;
+
+		}
+
+		</style>
+
+
+	</head>
+					
+	<body>
+
+
+		<h1>InstaPhoto Google Map!</h1>
+		<p> See Other People's photos <p>
+		<p> by Soona Kwak </p>
+
+			<div id="map-canvas"></div>
+
+
+
+						
+	</body>
+
+
+
+</html>
