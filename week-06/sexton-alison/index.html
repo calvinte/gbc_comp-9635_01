@@ -1,0 +1,139 @@
+<doctype html>
+<html>
+	<head>
+		<title>Week 6!</title>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script>
+			console.log($, google);
+
+			$(document).ready (function() {
+				var openInfoWindow;
+				var map = new google.maps.Map($('#map-canvas')[0], {
+					zoom: 16,
+				});
+
+			google.maps.event.addListener(map, 'click', function(event){
+					searchPhotos(event.latLng);
+			});
+
+			navigator.geolocation.getCurrentPosition(function(position){
+			var latlng = new google.maps.LatLng(
+				position.coords.latitude, 
+				position.coords.longitude
+				);
+
+				searchPhotos(latlng);
+			});
+			
+			function searchPhotos(latlng) {
+				map.setCenter(latlng);
+				new google.maps.Marker({
+					position: latlng,
+					map: map,
+					animation: google.maps.Animation.BOUNCE,
+				});
+
+			$.ajax({
+							type: 'GET',
+							dataType: 'jsonp',
+							url: 'https://api.instagram.com/v1/media/search'
+								+ '?distance=100'
+								+ '&lat=' + latlng.lat() 
+								+ '&lng='+ latlng.lng() 
+								+'&client_id=585d00be2af34a26b0e1caa6995cf19f',
+							success: function(response) {
+								console.log(response);
+								response.data.forEach(function(media) {
+									var latlng = new google.maps.LatLng (
+										media.location.latitude,
+										media.location.longitude
+										);
+									var marker = new google.maps.Marker({
+										position: latlng,
+										map: map,
+										icon: media.user.profile_picture,
+
+									});
+
+									var imgContent = {
+										user: '<h4>' + media.user.username+ '</h4>',
+										image: '<img src="' + media.images.low_resolution.url + '">',
+										hashtag: '<p>' + "#" + media.tags + '</p>',
+		
+									}
+
+									var infoWindow = new google.maps.InfoWindow({
+										content: imgContent.user + imgContent.image + imgContent.hashtag,
+									});
+
+									google.maps.event.addListener(marker, 'click', function() {
+										if (openInfoWindow) openInfoWindow.close();
+										openInfoWindow = infoWindow;
+										infoWindow.open(map, marker);
+
+									});
+
+									/*google.maps.event.addListener(marker, 'click', function(){
+										window.open(media.link);
+									});*/
+
+									google.maps.event.addListener(marker, 'mouseover', function(){
+										console.log(media.user.full_name);
+									});
+								});
+							},
+						});
+		}
+		});
+
+		</script>
+		
+    <style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Raleway:300);
+    html, body, #map-canvas {
+    	height:85%;
+    	width:100%;
+    	margin: 0;
+    	padding: 0;
+    	font-family: 'Raleway', 'sans-serif';
+    	z-index:1;
+   	}
+   	#title {
+   		background-color:#CADFAA;
+   		opacity: 0.7;
+   		padding:0;
+   		margin:0;
+   		z-index:3;
+   		height:30%;
+   	}
+
+   	#title h1{ 
+   		font-size:50px;
+   		text-align: center;
+   		padding:0;
+   		margin:0;
+   	}
+
+   	#footer {
+   		opacity: 0.7;
+   		width:100%;
+   		height:100%;
+   		background-color: #B3D1FF;
+   		padding:0;
+   		margin:0;
+   	}
+
+   	#footer p {
+   		padding:0;
+   		margin:0;
+   		text-align:center;
+   	}
+    </style>
+	</head>
+	<body>
+		<div id="title"><h1>Toronto Photo Diaries</h1></div>
+    	<div id="map-canvas"></div>
+    	<footer id="footer"><p>footer</p></div>
+	</body>
+</html>
