@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-
+<h1> My Instagram API </h1>
 	<title>Week 6!!</title>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
@@ -55,12 +55,31 @@
 							var marker = new google.maps.Marker({
 								position: latlng,
 								map: map,
-							});
+								icon: media.user.profile_picture
+								});
+								
+								marker.setMap(map);
+							
 							var infowindow = new google.maps.InfoWindow({
-								content: '<img src="' + media.images.low_resolution.url + '">'
-								+ '<br> Location: ' + media.location.name
-								+ '<br> Uploaded By: ' + media.user.username
-								+ '<br> Instagram Url: <a href="' + media.link +'">' + media.link +'</a>',
+								content: ''
+								//+ '<br> Location: ' + media.location.name
+								//+ '<br> Uploaded By: ' + media.user.username
+								//+ '<br> Instagram Url: <a href="' + media.link +'">' + media.link +'</a>'
+								+ '<div class="insta-photo">'
+								+ '<a target="_blank" href="' + media.link + '">'
+								+ '<img src="' + media.images.low_resolution.url + '">'
+								+ '</a>'
+								+ '</div>'
+								+ '<div class="user-info">'
+								+ '<br> Name: ' + media.user.full_name 
+								+ '<br> User Name: ' + media.user.username
+								+ '<br> Location: ' + media.location.name 
+								+ '<img class="picture" src="' + media.user.profile_picture + '">'
+								+ '</a>'
+								+ //'<br> Location: ' + media.location.name
+								+ //'<br> Uploaded By: ' + media.user.username
+								+ '</div>'
+								,
 								
 								
 							});
@@ -84,11 +103,75 @@
 				margin: 0;
 				padding: 0;
 				width: 100%;
+				
+				}
+				
+			h1{
+			color: white;
+			text-decoration: underline;
+			font-size: 35px;
+			text-align: center;
+			background: url('colorful-world-background.jpg');
 			}
+			
+			.insta-photo {
+			line-height: 15;	
+			overflow: hidden;
+			background-color: black;
+			background-size: cover;
+			
+			
+		}
+		
+			
+			
+			.user-info {
+			background: black;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			bottom: 0px;
+			text-align: left;
+			color: white;
+			height: 100px;
+			padding: 5px;
+			position: absolute;
+			width: 100%;
+		}
+			
+			.picture{
+			
+			float: right;
+			position: relative;
+			border-radius: 80%;
+			border-style: solid;
+			border-color: white;
+			border-width: 5px;
+			bottom: 58px;
+			}
+			
+			
+			.user-info a {
+			color: inherit;
+			display: block;
+			height: 75%;
+			text-decoration: inherit;
+		}
+			
+			.user-info .picture {
+			border-radius: 400%;
+			float: right;
+			height: 100%;
+		}
+		.user-info .name {
+			line-height: 50px;
+		}
+			
 		</style>
 
 </head>
 <body>
 <div id="map-canvas"></div>
+
+
 </body>
 </html>
