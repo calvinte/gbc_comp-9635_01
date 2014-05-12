@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Week 6 Google Maps + Instagram</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
+  		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				var openInfoWindow;
+				var map = new google.maps.Map($('#map-canvas') [0], {
+					zoom:16,
+				});
+				google.maps.event.addListener(map, 'click', function(event) {
+					
+					searchPhotos(event.latLng);
+
+				});
+
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var latLng = new google.maps.LatLng (
+						position.coords.latitude, 
+						position.coords.longitude
+						);
+					searchPhotos(latLng);
+				});
+
+				function searchPhotos(latLng){
+					map.setCenter(latLng);
+					new google.maps.Marker({
+						position: latLng,
+						map: map,
+						animation: google.maps.Animation.BOUNCE
+					});
+
+					$.ajax({
+						type: 'GET',
+						dataType:'jsonp',
+						url:'https://api.instagram.com/v1/media/search'
+						+ '?distance=100'
+						+'&lat='+ latLng.lat() 
+						+'&lng='+ latLng.lng() 
+						+'&client_id=585d00be2af34a26b0e1caa6995cf19f',
+						success: function (response){
+							console.log(response);
+							response.data.forEach (function(media){
+								var latlng = new google.maps.LatLng(media.location.latitude, media.location.longitude);
+								var marker = new google.maps.Marker ({
+									position: latlng,
+									map: map,
+								});
+								
+								var infowindow = new google.maps.InfoWindow({
+									content: 
+									'<div class="pics">'
+										+'<a target="blank" href="'
+										+ media.link
+										+'"><img src="' + media.images.low_resolution.url + '" ></a>'
+										+'<br/>'										
+										+ '<h2>'
+										+ 'Usermane: '
+										+ media.user.username
+										+ '</h2>'
+										+ '<h2>'
+										+'Full name: '
+										+ media.user.full_name
+										+ '</h2>'
+										+ '<h2>'
+										+ moment.unix(media.created_time).format('YYYY-MM-DD HH:mm')
+										+ '</h2>'
+
+
+								});
+								google.maps.event.addListener(marker, 'click', function(){
+								
+									if (openInfoWindow)openInfoWindow.close();
+									openInfoWindow = infowindow;
+
+									infowindow.open(map, marker);
+								});
+							});
+						},
+
+						});
+				}
+			});
+		</script>
+		
+    <style type="text/css">
+     @import url(http://fonts.googleapis.com/css?family=Antic+Slab);
+     
+    html, body, #map-canvas { 
+    	height: 100%; 
+		width: 100%; 
+		margin: 0; 
+		padding: 0; 
+		font-family: 'Antic Slab', serif;
+
+		}
+		h1{ height: 100px;
+			width: 100%;
+			margin: 0px;
+			font-size: 3em;
+			z-index: 1;
+			background-color: #CBF2EE;
+			text-align: center;
+		}
+		h2 {
+			
+			font-family: 'Antic Slab';
+			margin-top: 2px;
+			margin-left: 10px;
+			font-size: 1.2em; 
+		 	font-weight: bold;
+		 	
+		 }
+		
+		
+		 img{ 
+		 margin-top: 10px;		 	
+			margin-left: 10px;
+		 	border: 2px #00FFE5 solid;
+		 }
+
+		.pics {
+		 	background: #CCC;
+		 	border-radius: 5px;
+		 	width: 400px;
+		 	height: 450px;
+		 	
+
+		 }
+  		.pics p{
+  			margin-left: 10px;
+  			margin-bottom: 10px;
+			font-family: 'Antic Slab';
+			font-size: 1.12em; }
+      
+	</style>
+
+	
+	</head>
+	<body>
+		<h1>Torontians' Instapics :}</h1>
+		<div id="map-canvas"></div>
+	</body>
+</html>
+
