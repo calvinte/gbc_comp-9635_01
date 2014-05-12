@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Week 7! Maria Chau</title>
+		
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script>
+			$(document).ready(function() {
+				var openInfoWindow;
+				var map = new google.maps.Map($('#map-canvas')[0], {
+					zoom: 16,
+				});
+
+				google.maps.event.addListener(map, 'click', function(event) {
+					searchPhotos(event.latLng);
+				});
+
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var latlng = new google.maps.LatLng(
+						position.coords.latitude,
+						position.coords.longitude
+					);
+					searchPhotos(latlng);
+				});
+
+				function searchPhotos(latlng) {
+					map.setCenter(latlng);
+					new google.maps.Marker({
+						position: latlng,
+						map: map,
+						animation: google.maps.Animation.BOUNCE
+					});
+
+					$.ajax({
+						type: 'GET',
+						dataType: 'jsonp',
+						url: 'https://api.instagram.com/v1/media/search'
+							+ '?distance=100'
+							+ '&lat=' + latlng.lat()
+							+ '&lng=' + latlng.lng()
+							+ '&client_id=585d00be2af34a26b0e1caa6995cf19f',
+						success: function(response) {
+							console.log(response);
+							response.data.forEach(function(media) {
+								var latlng = new google.maps.LatLng(
+									media.location.latitude,
+									media.location.longitude
+								);
+								
+								var marker = new google.maps.Marker({
+									position: latlng,
+									map: map,
+									//icon: media.user.profile_picture
+									icon: {
+										url: media.user.profile_picture,
+										size: new google.maps.Size(75, 75),
+									}
+									
+								});
+								
+								marker.setMap(map);
+								
+								var infowindow = new google.maps.InfoWindow({
+									content: ''	
+										+ '<div class="insta-photo">'
+										+ '<h1>' + media.user.full_name + '</h1>'
+										+ '<a target="_blank" href="' + media.link + '">'
+										+ '<img src="' + media.images.low_resolution.url + '">'
+										+ '</a>'
+										+ '</div>'
+										+ '<div class="user-info">'
+										+ '<a target="_blank" href="http://instagram.com/' + media.user.username + '">'
+										+ '<span class="name">Username:  ' + media.user.username + '</span>'
+										+ '<img class="picture" src="' + media.user.profile_picture + '">'
+										+ '<br>Location:  ' + media.location.name 
+										+ '</a>'
+										+ '</div>'
+										,
+								});
+								google.maps.event.addListener(marker, 'click', function() {
+									if (openInfoWindow) openInfoWindow.close();
+									openInfoWindow = infowindow;
+									infowindow.open(map, marker);
+								});
+
+							});
+						},
+					});
+				}
+
+			});
+		</script>
+		<style type="text/css">
+		html, body, #map-canvas {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			font-family: Helvetica;
+		}
+		
+		h1 {
+			text-align: center;
+			color: #cc0033;
+		}
+		
+		p {
+			text-align: center;
+		}
+		
+		.insta-photo {
+			line-height: 0;	
+			overflow: hidden;
+			
+		}
+		.user-info {
+			background: rgba(0, 0, 0, .5);
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			bottom: 0;
+			color: white;
+			height: 100px;
+			padding: 5px;
+			position: absolute;
+			width: 100%;
+			border-top: 1px solid white;
+			
+		}
+		.user-info a {
+			color: inherit;
+			display: block;
+			height: 100%;
+			text-decoration: inherit;
+		}
+		
+		
+		
+		.user-info .picture {
+			border-radius: 100%;
+			float: right;
+			height: 100%;
+			border: 2px solid white;
+		}
+		
+			
+		.user-info .name {
+			line-height: 40px;
+		}
+		</style>
+
+	<head>
+	<body>
+		<h1>I N S T A G R A M</h1>
+		<p>Let's nose around some Torontonians' instagram photos!</p>
+		<div id="map-canvas"></div>
