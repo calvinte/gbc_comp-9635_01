@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Week 7</title>
+			<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9rABaf_KBbLEY9UI2wiwiOZ8SeFoAZBE&sensor=false"></script>
+		<script>
+			//console.log($,google);
+			$(document).ready(function() {
+				var openInfowindow;
+				var map=new google.maps.Map($('#map-canvas')[0], {
+					zoom: 16,
+
+				});
+
+				google.maps.event.addListener(map,'click',function(event) {
+					//console.log(event);
+					searchPhotos(event.latLng);
+
+				});
+
+				navigator.geolocation.getCurrentPosition(function(position){
+					console.log(position);
+					var latlng=new google.maps.LatLng(
+						position.coords.latitude,
+						position.coords.longitude);
+						map.setCenter(latlng);
+
+					searchPhotos(latlng);
+				});
+
+				function searchPhotos(latlng) {
+					map.setCenter(latlng);
+					new google.maps.Marker ({
+						position:latlng,
+						map:map,
+						animation:google.maps.Animation.BOUNCE,
+						icon: 'angrybird.png'
+					});
+					
+					$.ajax({
+
+						type:'GET',
+						dataType:'jsonp',
+						url:'https://api.instagram.com/v1/media/search'
+						+'?distance=100'
+						+'&lat='+latlng.lat()
+						+'&lng='+latlng.lng()
+						+'&client_id=585d00be2af34a26b0e1caa6995cf19f',
+						success:function(response) {
+							console.log(response);
+							response.data.forEach(function(media) {
+								
+								var latlng=new google.maps.LatLng(
+									media.location.latitude,
+									media.location.longitude
+									);
+								
+								var marker=new google.maps.Marker ({
+									position:latlng,
+									map:map,
+									icon: 'angryyellow.png'
+								});
+
+								var contentInfo = ({ 
+									link:
+									'<div class="insta-photo">'
+									+'<a target="_blank" href="' + media.link + '"><img src="'+media.images.low_resolution.url+'"></a>'
+									+'</div>',
+									/*author:
+									'<p>Author:</br>' + media.user.full_name +'</p>',*/
+									caption: '',
+									author:
+									'<div class="author-info">'
+										+ '<a target="_blank" href="http://instagram.com/' + media.user.username + '">'
+										+ '<span class="name">' + media.user.full_name + '</span>'
+										+ '<img class="picture" src="' + media.user.profile_picture + '">'
+										+ '</a>'
+										+ '</div>',
+										count:
+										'<div class="insta-count">'
+										+ '<span class ="count">' +media.likes.count+'</span>'+'<img class="count" src="greenbird.png"/>'
+										+ '</div>',
+
+								});
+								if (media.caption) contentInfo.caption = '<div class="info-caption">' +media.caption.text +'</div>';
+
+								var infowindow=new google.maps.InfoWindow({
+									content: contentInfo.link+contentInfo.author+contentInfo.caption+contentInfo.count,
+
+								});
+
+							google.maps.event.addListener(marker,'click',function(){
+								if (openInfowindow)openInfowindow.close();
+								openInfowindow=infowindow;
+								infowindow.open(map,marker)
+								marker.setIcon('angryblue.png');
+
+
+							});
+
+							
+							});
+						},
+
+
+
+						});
+					
+				}
+			});
+;
+		</script>
+
+		<style type="text/css">
+		html,body,#map-canvas {
+			height:100%;
+			margin:0;
+			padding:0;
+			width:100%;
+		}
+		h1{
+			text-align: center;
+			color: #f5f5d5;
+			background: #9eba62;
+			padding-top: 5px;
+			padding-bottom: 10px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		p {
+			text-align: center;
+			color: #f5f5d5;
+			font-size: 16px;
+			font-family: sans-serif;
+			background: #9eba62;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-bottom: 5px;
+
+		}
+
+		.insta-photo {
+			line-height: 0;
+			overflow: hidden;
+			border-style:solid;
+			border-width:5px;
+			border-radius: 5px 5px 5px 5px;
+			border-color: #d184ad;
+			text-align: center;
+			background: #ede9d1;
+		}
+		.author-info {
+			color: #fca868;
+			height: 30px;
+			box-sizing: border-box;
+			text-decoration: inherit;
+			text-align: center;
+			background: #e0dd7e;
+			bottom: 0;
+			width: 100%;
+		}
+
+		.author-info a {
+			color: inherit;
+			display: block;
+			height: 100%;
+			text-decoration: inherit;
+		}
+		.author-info .picture {
+			border-radius: 100%;
+			float: left;
+			height: 100%;
+		}
+
+		.user-info .name {
+			line-height: 40px;
+		}
+		
+		.info-caption {
+			height: 100%;
+			color: #f5f5d5;
+			font-size: 12px;
+			background: #9eba62;
+			opacity: 0.6;
+			
+		}
+
+	.insta-count {
+		height: 100%;
+		float:left;
+		margin-left: 75px;
+	}
+
+	.insta-count img {
+		margin-left: 75px;
+		float:left;
+	}
+
+	
+		
+		</style>
+
+
+	</head>
+					
+	<body>
+
+
+		<h1>InstaPhoto Google Map!</h1>
+		<p> See What Kind of Pictures are Being Taken Around!!! <p>
+		<p> by Soona Kwak </p>
+
+			<div id="map-canvas"></div>
+
+
+
+						
+	</body>
+
+
+
+</html>
